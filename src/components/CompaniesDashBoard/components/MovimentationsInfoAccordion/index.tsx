@@ -43,8 +43,12 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
-
-export default function MovimentationsInfoAccordion() {
+interface IMovimentationsInfoAccordionProps{
+  companySummary: any
+  setSelectedDataComponent: any
+  setSelectedMovimentation: any
+}
+export default function MovimentationsInfoAccordion({companySummary, setSelectedDataComponent, setSelectedMovimentation}: IMovimentationsInfoAccordionProps) {
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange =
@@ -60,7 +64,7 @@ export default function MovimentationsInfoAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          <><a >Pedidos</a><br></br></>
+          <><a onClick={() => setSelectedDataComponent("movimentations")}>Pedidos</a><br></br></>
           <><a >Despesas</a><br></br></>
           </Typography>
         </AccordionDetails>

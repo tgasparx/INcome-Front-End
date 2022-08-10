@@ -45,8 +45,9 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 interface IEmployeesInfoAccordionProps{
   companyEmployees: any
+  setSelectedDataComponent: any
 }
-export default function EmployeesInfoAccordion({companyEmployees}: IEmployeesInfoAccordionProps) {
+export default function EmployeesInfoAccordion({companyEmployees, setSelectedDataComponent}: IEmployeesInfoAccordionProps) {
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange =
@@ -63,7 +64,7 @@ export default function EmployeesInfoAccordion({companyEmployees}: IEmployeesInf
         <AccordionDetails>
           <Typography>
            {companyEmployees.employees.all_employees.map((e: any) => {
-            return <><a key={e.name}>{e.name}</a><br key={e.cnpj}></br></>
+            return <><a key={e.name} onClick={() => setSelectedDataComponent("employees")}>{e.name}</a><br key={e.cnpj}></br></>
            })}
           </Typography>
         </AccordionDetails>

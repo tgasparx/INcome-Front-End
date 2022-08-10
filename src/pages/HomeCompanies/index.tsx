@@ -28,7 +28,7 @@ export default function HomeCompanies() {
     return (
         <PageContainer>
             <Header />
-            <CompaniesDashboard companySummary={companySummary}/>
+            <CompaniesDashboard/>
 
         </PageContainer>
     )

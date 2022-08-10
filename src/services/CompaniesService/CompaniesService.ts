@@ -20,7 +20,7 @@ async companyAuth({email, password}: any){
 async companyEdit(token: string, {newData}: any){}
 async companyDelete(token: string){}
 async companySummary(token: string){
-    const summary = await api.get("/companies/summary/1").then(response => response.data)
+    const summary = await api.get(`/companies/summary/${token}`).then(response => response.data)
     return summary
 }
 async getCompanyData(companyToken: string){
