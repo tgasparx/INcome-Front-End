@@ -44,7 +44,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-export default function CompanyInfoAccordion() {
+interface ICompanyInfoAccordion{
+  companyData: any
+}
+export default function CompanyInfoAccordion({companyData}:ICompanyInfoAccordion) {
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange =
@@ -60,8 +63,9 @@ export default function CompanyInfoAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-           Email:<br></br>
-           Cnpj:
+          Nome: {companyData.name}<br></br>
+           Email: {companyData.email}<br></br>
+           Data de Criação: {companyData.created_at}
           </Typography>
         </AccordionDetails>
       </Accordion>

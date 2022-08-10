@@ -7,23 +7,28 @@ import {useNavigate} from 'react-router-dom'
 
 
 export default function HomeCompanies() {
-    const { checkToken } = useContext(Context)
+    const { checkToken, getSummaryCompany,getCompanyData, getCompanyEmployees, companySummary } = useContext(Context)
     const token = localStorage.getItem("CompanyToken") || ""
     const navigate = useNavigate()
-    async function checkValidToken() {
+    
+    async function checkValidTokenAndGetData() {
         const isValid = await checkToken(token)
         if(!isValid){
             navigate("/", {replace: true})
+        }else{
+            getSummaryCompany(token)
+            getCompanyData()
+            getCompanyEmployees()
         }
     }
     useEffect(() => {
-        checkValidToken()
+        checkValidTokenAndGetData()
     }, [])
 
     return (
         <PageContainer>
             <Header />
-            <CompaniesDashboard />
+            <CompaniesDashboard companySummary={companySummary}/>
 
         </PageContainer>
     )

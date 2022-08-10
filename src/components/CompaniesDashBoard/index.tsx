@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { Context } from "../../context";
 import CompanyInfoAccordion from "./components/CompanyInfoAccordion";
 import EmployeesInfoAccordion from "./components/EmployeesInfoAccordion";
 import ExpensesGrafic from "./components/ExpensesGrafic";
@@ -6,8 +8,12 @@ import { OrderEvolutionGrafic } from "./components/OrderEvolutionGrafic";
 import ShowDataComponent from "./components/showDataComponent";
 import { Container, DownContent, Left, Right, UpContent, UpLeft, UpRight } from "./styles";
 
-export default function CompaniesDashboard(){
+interface ICompaniesDashBoardProps{
+    companySummary: any
+}
 
+export default function CompaniesDashboard({companySummary}: ICompaniesDashBoardProps){
+const {companyData, companyEmployees} = useContext(Context)
 
     return (
         <>
@@ -19,12 +25,11 @@ export default function CompaniesDashboard(){
             <UpRight>
                 <ExpensesGrafic/>
             </UpRight>
-           
         </UpContent>
         <DownContent>
         <Left>
-            <CompanyInfoAccordion/>
-            <EmployeesInfoAccordion/>
+            <CompanyInfoAccordion companyData={companyData}/>
+            <EmployeesInfoAccordion companyEmployees={companyEmployees}/>
             <MovimentationsInfoAccordion/>
         </Left>
         <Right>

@@ -60,8 +60,8 @@ export default function MovimentationsInfoAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-           Email:<br></br>
-           Cnpj:
+          <><a >Pedidos</a><br></br></>
+          <><a >Despesas</a><br></br></>
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -43,8 +43,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
-
-export default function EmployeesInfoAccordion() {
+interface IEmployeesInfoAccordionProps{
+  companyEmployees: any
+}
+export default function EmployeesInfoAccordion({companyEmployees}: IEmployeesInfoAccordionProps) {
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange =
@@ -60,8 +62,9 @@ export default function EmployeesInfoAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-           Email:<br></br>
-           Cnpj:
+           {companyEmployees.employees.all_employees.map((e: any) => {
+            return <><a key={e.name}>{e.name}</a><br key={e.cnpj}></br></>
+           })}
           </Typography>
         </AccordionDetails>
       </Accordion>

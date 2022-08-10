@@ -19,8 +19,19 @@ async companyAuth({email, password}: any){
 }
 async companyEdit(token: string, {newData}: any){}
 async companyDelete(token: string){}
-async companySummary(token: string){}
+async companySummary(token: string){
+    const summary = await api.get("/companies/summary/1").then(response => response.data)
+    return summary
+}
+async getCompanyData(companyToken: string){
+    const companyData = await api.get(`/companies/data/${companyToken}`).then(response => response.data)
+    return companyData
+}
 
+async listEmployees(token: string){
+    const employees = await api.get(`/companies/employees/${token}`).then(response => response.data)
+    return employees
+}
 async insertNewEmployee({name, email, password, cpf}: any){}
 async editEmployee(token: string, {newData}: any ){}
 async deleteEmployee(token: string, employeeCPF: string){}
