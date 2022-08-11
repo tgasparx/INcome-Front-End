@@ -3,6 +3,7 @@ import { Context } from "../../context";
 import CompanyInfoAccordion from "./components/CompanyInfoAccordion";
 import EmployeesInfoAccordion from "./components/EmployeesInfoAccordion";
 import ExpensesGrafic from "./components/ExpensesGrafic";
+import MenuModal from "./components/MenuModal";
 import MovimentationsInfoAccordion from "./components/MovimentationsInfoAccordion";
 import { OrderEvolutionGrafic } from "./components/OrderEvolutionGrafic";
 import ShowEmployeesDataComponent from "./components/showEmployeesDataComponent";
@@ -17,6 +18,7 @@ export default function CompaniesDashboard(){
 const {companyData, companyEmployees, companySummary} = useContext(Context)
 const [selectedDataComponent, setSelectedDataComponent] = useState<any>("")
 const [selectedMovimentation, setSelectedMovimentation] = useState<any>("")
+const [modalIsOpen, setIsOpen] = useState(false);
 function handleChangeSelectedDataComponent(){
     switch (selectedDataComponent) {
         case "employees":

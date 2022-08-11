@@ -9,7 +9,9 @@ import { GlobalStyle } from './globalStyles';
 import CompanyRegistryPage from './pages/CompanyRegistryPage';
 import UserRegistryPage from './pages/UserRegistryPage';
 import { ContextProvider } from './context';
+import Modal from 'react-modal';
 
+Modal.setAppElement('#root');
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

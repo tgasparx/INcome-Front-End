@@ -59,7 +59,7 @@ export default function CompanyInfoAccordion({companyData}:ICompanyInfoAccordion
     <div>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Informações da companhia</Typography>
+          <Typography>Companhia</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

@@ -57,7 +57,6 @@ async function getCompanyEmployees(){
 // START USERS
 
 // END USERS
-
     return (
         <Context.Provider value={{checkToken,handleCreateCompany,handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees}}>
             {children}

@@ -60,12 +60,12 @@ export default function MovimentationsInfoAccordion({companySummary, setSelected
     <div>
       <Accordion expanded={expanded === 'panel0'} onChange={handleChange('panel0')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Informações das movimentações</Typography>
+          <Typography>Movimentações</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          <><a onClick={() => setSelectedDataComponent("movimentations")}>Pedidos</a><br></br></>
-          <><a >Despesas</a><br></br></>
+          <><a onClick={() => {setSelectedDataComponent("movimentations"); setSelectedMovimentation("pedidos")}}>Pedidos</a><br></br></>
+          <><a onClick={() => {setSelectedDataComponent("movimentations"); setSelectedMovimentation("despesas")}}>Despesas</a><br></br></>
           </Typography>
         </AccordionDetails>
       </Accordion>

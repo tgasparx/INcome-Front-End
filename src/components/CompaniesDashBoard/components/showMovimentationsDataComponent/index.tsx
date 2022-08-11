@@ -1,3 +1,4 @@
+import ShowMovimentationsAccordion from "./components/showMovimentationsAccordion"
 
 interface IShowMovimentationsDataComponent{
     companySummary: any
@@ -5,11 +6,23 @@ interface IShowMovimentationsDataComponent{
 }
 export default function ShowMovimentationsDataComponent({companySummary, selectedMovimentation}: IShowMovimentationsDataComponent){
 
+if(selectedMovimentation === "pedidos"){
     return (
         <>
-        <div>
-            Movimentations
-        </div>
+      {companySummary.orders_summary.all_orders.map((e: any) => {
+        return <ShowMovimentationsAccordion element={e}/>
+      })}
         </>
     )
+}
+else{
+    return (
+        <>
+             {companySummary.expenses_summary.all_expenses.map((e: any) => {
+        return <ShowMovimentationsAccordion element={e}/>
+      })}
+        </>
+    )
+}
+
 }

@@ -59,7 +59,7 @@ export default function EmployeesInfoAccordion({companyEmployees, setSelectedDat
     <div>
       <Accordion expanded={expanded === 'panel0'} onChange={handleChange('panel0')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Informações dos funcionários</Typography>
+          <Typography>Funcionários</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

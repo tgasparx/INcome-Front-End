@@ -66,7 +66,7 @@ height: 100%;
 `;
 export const Right = styled.div`
 display: flex;
-flex-direction: row;
+flex-direction: column;
 width: 50%;
 height: 100%;
 
