@@ -8,7 +8,8 @@ import {useNavigate} from 'react-router-dom'
 
 export default function HomeCompanies() {
     const { checkToken, getSummaryCompany,getCompanyData, getCompanyEmployees, companySummary } = useContext(Context)
-    const token = localStorage.getItem("CompanyToken") || ""
+    const token = localStorage.getItem("CompanyToken")
+    console.log("hometoken", token)
     const navigate = useNavigate()
     
     async function checkValidTokenAndGetData() {
@@ -16,14 +17,14 @@ export default function HomeCompanies() {
         if(!isValid){
             navigate("/", {replace: true})
         }else{
-            getSummaryCompany(token)
+            getSummaryCompany()
             getCompanyData()
             getCompanyEmployees()
         }
     }
     useEffect(() => {
         checkValidTokenAndGetData()
-    }, [])
+    }, [token])
 
     return (
         <PageContainer>

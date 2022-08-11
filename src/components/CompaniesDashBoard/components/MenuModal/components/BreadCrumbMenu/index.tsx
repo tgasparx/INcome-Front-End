@@ -22,7 +22,7 @@ export default function BreadCrumbMenu({setSelectedPortal}: IBreadCrumbMenuProps
           sx={{ display: 'flex', alignItems: 'center', fontSize: "12px" }}
           color="inherit"
           // href="/"
-        onClick={() => setSelectedPortal("company")}
+        onClick={() => setSelectedPortal("portal1")}
         >
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Companhia
@@ -32,7 +32,7 @@ export default function BreadCrumbMenu({setSelectedPortal}: IBreadCrumbMenuProps
           sx={{ display: 'flex', alignItems: 'center', fontSize: "12px" }}
           color="inherit"
           // href="/material-ui/getting-started/installation/"
-          onClick={() => setSelectedPortal("employees")}
+          onClick={() => setSelectedPortal("portal2")}
         >
           <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Funcionários
@@ -42,7 +42,7 @@ export default function BreadCrumbMenu({setSelectedPortal}: IBreadCrumbMenuProps
           sx={{ display: 'flex', alignItems: 'center', fontSize: "12px" }}
           color="inherit"
           // href="/material-ui/getting-started/installation/"
-          onClick={() => setSelectedPortal("movimentations")}
+          onClick={() => setSelectedPortal("portal3")}
         >
           <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Movimentações

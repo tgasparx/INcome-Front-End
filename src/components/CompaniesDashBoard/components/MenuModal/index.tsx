@@ -45,11 +45,11 @@ export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
     
       function controlSelectedPortal(){
         switch (selectedPortal) {
-            case "company":
+            case "portal1":
                 return <CompanyComponent/>
-            case "employees":
+            case "portal2":
                 return  <EmployeesComponent/>
-            case "movimentations":
+            case "portal3":
                 return <MovimentationsComponent/>
             default:
                 return <CompanyComponent/>

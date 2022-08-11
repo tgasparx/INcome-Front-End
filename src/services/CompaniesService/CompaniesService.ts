@@ -9,6 +9,7 @@ async createCompany({name, email, password, cnpj}: any){
 async companyAuth({email, password}: any){
     try {
         const logged = await api.post("/companies/auth", {email, password}).then(response => response.data)
+        console.log(logged)
         return logged
     } catch (error) {
         console.log(error)
@@ -17,10 +18,13 @@ async companyAuth({email, password}: any){
     }
 
 }
-async companyEdit(token: string, {newData}: any){}
+async companyEdit({name, email, cnpj}: any, companyToken: string){
+    const edited = await api.patch(`/companies/edit/${companyToken}`, {name, email, cnpj}).then(response => response.data)
+    return edited
+}
 async companyDelete(token: string){}
-async companySummary(token: string){
-    const summary = await api.get(`/companies/summary/${token}`).then(response => response.data)
+async companySummary(companyToken: string){
+    const summary = await api.get(`/companies/summary/${companyToken}`).then(response => response.data)
     return summary
 }
 async getCompanyData(companyToken: string){
@@ -28,8 +32,8 @@ async getCompanyData(companyToken: string){
     return companyData
 }
 
-async listEmployees(token: string){
-    const employees = await api.get(`/companies/employees/${token}`).then(response => response.data)
+async listEmployees(companyToken: string){
+    const employees = await api.get(`/companies/employees/${companyToken}`).then(response => response.data)
     return employees
 }
 async insertNewEmployee({name, email, password, cpf}: any){}
