@@ -35,24 +35,24 @@ export default function DataShowTable({companyEmployees}: IDataShowTableProps) {
           <TableRow>
             <TableCell>Nome</TableCell>
             <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Cnpj</TableCell>
+            <TableCell align="right">CPF</TableCell>
             <TableCell align="right">Data de contratação</TableCell>
             <TableCell align="right">Data de atualização</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {companyEmployees.employees.all_employees.map((row: any) => (
+          {companyEmployees.employees.all_employees.map((e: any) => (
             <TableRow
-              key={row.name}
+              key={e.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {e.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{e.email}</TableCell>
+              <TableCell align="right">{e.cpf}</TableCell>
+              <TableCell align="right">{e.created_at}</TableCell>
+              <TableCell align="right">{e.updated_at}</TableCell>
             </TableRow>
           ))}
         </TableBody>

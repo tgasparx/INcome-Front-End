@@ -36,7 +36,10 @@ async listEmployees(companyToken: string){
     const employees = await api.get(`/companies/employees/${companyToken}`).then(response => response.data)
     return employees
 }
-async insertNewEmployee({name, email, password, cpf}: any){}
+async insertNewEmployee({name, email, password, cpf}: any, token: string){
+    const created = await api.post(`/users/create/${token}`, {name, email, password, cpf})
+    return created
+}
 async editEmployee(token: string, {newData}: any ){}
 async deleteEmployee(token: string, employeeCPF: string){}
 

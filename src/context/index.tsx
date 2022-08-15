@@ -83,12 +83,17 @@ export function ContextProvider({ children }: IContextProvider) {
         }
 
     }
+    async function handleCreateNewEmployee({name, email, password, cpf}: any){
+        const created = await companiesServices.insertNewEmployee({name, email, password, cpf}, companyToken)
+        console.log(created)
+        return true
+    }
     //END COMPANIES
     // START USERS
 
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee }}>
             {children}
         </Context.Provider>
     )

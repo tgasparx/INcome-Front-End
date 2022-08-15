@@ -11,4 +11,5 @@ export default interface IContextData{
     companyData: any
     getCompanyEmployees: any
     companyEmployees: any
+    handleCreateNewEmployee: any
 }

@@ -6,7 +6,7 @@ display: grid;
 grid-template-columns: 30% 70%;
 grid-template-rows: 100%;
 width: 100%;
-min-height: 370px;
+min-height: 400px;
 background-color: lightgray;
 border-radius: 8px;
 box-shadow: 0.2px 1px 4px;
