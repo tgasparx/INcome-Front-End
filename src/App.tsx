@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CompanyLoginPage from './components/CompanyLoginComponent';
+import SelectLoginButton from './components/SelectLoginButtons';
 import UserLoginPage from './components/UserLoginComponent';
 
 function App() {
@@ -14,8 +15,7 @@ function App() {
     }
   return(
     <>
-    <button onClick={() => setSelectedPortal("company")}>Companhia</button>
-  <button onClick={() => setSelectedPortal("user")}>Motorista</button>
+  <SelectLoginButton setSelectedPortal={setSelectedPortal}/>
 
 {controlExibedPortal()}
 
