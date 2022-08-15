@@ -18,7 +18,7 @@ grid-template-rows: 50%;
 export const NavContent = styled.nav`
 display: flex;
 flex-direction: column;
-background-color: yellow;
+//background-color: yellow;
 `;
 export const OptContent = styled.div`
 background-color: gray;

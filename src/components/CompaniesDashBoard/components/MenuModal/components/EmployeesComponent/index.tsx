@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Comp1 from "./components/Comp1";
 import Comp2 from "./components/Comp2";
+import MenuButtons from "./components/MenuButton";
 import { Container, NavContent, OptContent } from "./styles";
 
 
@@ -22,10 +23,11 @@ function controlSelectedComp(){
     return (
       <Container>
       <NavContent>
-      <button onClick={() => setSelectedComp("comp1")}>Funcionários </button>
-          <button onClick={() => setSelectedComp("comp2")}>Adicionar FUncionário</button>
-          <button onClick={() => setSelectedComp("comp1")} >Editar FUncionário</button>
-          <button onClick={() => setSelectedComp("comp1")}>Remover FUncionário</button>
+  
+          <MenuButtons onClick={() => setSelectedComp("comp1")} text="Funcionários"/>
+          <MenuButtons onClick={() => setSelectedComp("comp2")} text="Adicionar Funcionário"/>
+          <MenuButtons onClick={() => setSelectedComp("comp1")} text="Editar Funcionário"/>
+          <MenuButtons onClick={() => setSelectedComp("comp1")} text="Remover Funcionário"/>
       </NavContent>
       <OptContent>
       {controlSelectedComp()}

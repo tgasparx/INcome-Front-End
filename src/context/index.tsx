@@ -31,6 +31,12 @@ export function ContextProvider({ children }: IContextProvider) {
     //START COMPANIES
     async function handleCreateCompany({ name, email, password, cnpj }: any) {
         const created = await companiesServices.createCompany({ name, email, password, cnpj })
+            console.log(created)
+        if(created){
+            return true
+        }else{
+            return false
+        }
     }
     async function handleSignInCompany({ email, password }: any): Promise<any> {
         const logged = await companiesServices.companyAuth({ email, password })

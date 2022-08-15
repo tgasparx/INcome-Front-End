@@ -1,12 +1,15 @@
+import { useState } from "react";
+import CompanyRegistryComponent from "../../components/CompanyRegistryComponent";
 
 
 export default function CompanyRegistryPage(){
+ 
+
+   
 
     return (
         <>
-        <div>
-            Company registry
-        </div>
+       <CompanyRegistryComponent/>
         </>
     )
 }

@@ -3,6 +3,7 @@ import Comp1 from "./components/Comp1";
 import Comp2 from "./components/Comp2";
 import Comp3 from "./components/Comp3";
 import Comp4 from "./components/Comp4";
+import MenuButtons from "./components/MenuButton";
 import { Container, NavContent, OptContent } from "./styles";
 
 
@@ -27,15 +28,15 @@ const [selectedComp, setSelectedComp] = useState("")
     return (
         <Container>
         <NavContent>
-        <button onClick={() => setSelectedComp("comp1")}>Pedidos </button>
-        <button onClick={() => setSelectedComp("comp2")}>Adicionar Pedido</button>
-            <button onClick={() => setSelectedComp("comp1")}>Editar Pedido</button>
-            <button onClick={() => setSelectedComp("comp1")}>Excluir Pedido</button>
-            <br></br><br></br>
-        <button onClick={() => setSelectedComp("comp3")}>Despesas </button>
-        <button  onClick={() => setSelectedComp("comp4")}>Adicionar Despesa</button>
-            <button  onClick={() => setSelectedComp("comp3")}>Editar Despesa</button>
-            <button  onClick={() => setSelectedComp("comp3")}>Excluir Despesa</button>
+   
+            <MenuButtons onClick={() => setSelectedComp("comp1")} text="Pedidos"/>
+            <MenuButtons onClick={() => setSelectedComp("comp2")} text="Adicionar Pedido"/>
+            <MenuButtons onClick={() => setSelectedComp("comp1")} text="Editar Pedido"/>
+            <MenuButtons onClick={() => setSelectedComp("comp1")} text="Excluir pedido"/>
+            <MenuButtons onClick={() => setSelectedComp("comp3")} text="Despesas"/>
+            <MenuButtons onClick={() => setSelectedComp("comp4")} text="Adicionar despesa"/>
+            <MenuButtons onClick={() => setSelectedComp("comp3")} text="Editar despesa"/>
+            <MenuButtons onClick={() => setSelectedComp("comp3")} text="Excluir despesa"/>
    
         </NavContent>
         <OptContent>

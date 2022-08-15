@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Comp1 } from "./components/Comp1";
 import { Comp2 } from "./components/Comp2";
 import { Comp3 } from "./components/Comp3";
+import MenuButtons from "./components/MenuButton";
 import { Container, NavContent, OptContent } from "./styles";
 
 
@@ -23,9 +24,9 @@ function controlSelectedOpt(){
     return (
        <Container>
         <NavContent>
-        <button onClick={() =>setSelectedOpt("comp1")}>Companhia </button>
-        <button onClick={() => setSelectedOpt("comp2")}>Alterar Informações</button>
-            <button onClick={() => setSelectedOpt("comp3")}>Alterar Senha</button>
+            <MenuButtons onClick={() =>setSelectedOpt("comp1")} text="Companhia"/>
+            <MenuButtons  onClick={() => setSelectedOpt("comp2")} text="Alterar Informações"/>
+            <MenuButtons onClick={() => setSelectedOpt("comp3")} text="Alterar Senhar"/>
         </NavContent>
         <OptContent>
             {controlSelectedOpt()}
