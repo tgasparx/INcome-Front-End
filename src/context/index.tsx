@@ -88,12 +88,20 @@ export function ContextProvider({ children }: IContextProvider) {
         console.log(created)
         return true
     }
+    async function handleInsertOrder({description, value, status}: any){
+        const created = await companiesServices.insertOrder({description, value ,status}, companyToken)
+
+    }
+    async function handleInsertExpense({description, value, status}: any){
+        const created = await companiesServices.insertExpense({description, value, status}, companyToken)
+        console.log(created)
+    }
     //END COMPANIES
     // START USERS
 
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense }}>
             {children}
         </Context.Provider>
     )

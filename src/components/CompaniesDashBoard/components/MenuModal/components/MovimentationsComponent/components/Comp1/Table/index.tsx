@@ -25,9 +25,9 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 interface IDataShowTableProps{
-    companyEmployees: any
+  companySummary: any
 }
-export default function DataShowTable({companyEmployees}: IDataShowTableProps) {
+export default function DataShowTable({companySummary}: IDataShowTableProps) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
@@ -41,18 +41,18 @@ export default function DataShowTable({companyEmployees}: IDataShowTableProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {companyEmployees.employees.all_employees.map((row: any) => (
+          {companySummary.orders_summary.all_orders.map((element: any) => (
             <TableRow
-              key={row.name}
+              key={element.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {element.description}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{element.value}</TableCell>
+              <TableCell align="right">{element.status}</TableCell>
+              <TableCell align="right">{element.created_at}</TableCell>
+              <TableCell align="right">{element.updated_at}</TableCell>
             </TableRow>
           ))}
         </TableBody>

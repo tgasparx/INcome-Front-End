@@ -41,18 +41,18 @@ export default function DataShowTable({companySummary}: IDataShowTableProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {companySummary.orders_summary.all_orders.map((row: any) => (
+          {companySummary.expenses_summary.all_expenses.map((element: any) => (
             <TableRow
-              key={row.name}
+              key={element.description}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {element.description}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{element.value}</TableCell>
+              <TableCell align="right">{element.status}</TableCell>
+              <TableCell align="right">{element.created_at}</TableCell>
+              <TableCell align="right">{element.updated_at}</TableCell>
             </TableRow>
           ))}
         </TableBody>

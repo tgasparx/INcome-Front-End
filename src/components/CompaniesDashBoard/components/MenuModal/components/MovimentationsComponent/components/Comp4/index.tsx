@@ -5,24 +5,24 @@ import { Button, Container, Input, Label } from "./styles"
 
 export default function Comp4(){
   
-const {handleEditCompany, companyData} = useContext(Context)
-const [name, setName] = useState(companyData.name)
-const [email, setEmail] = useState(companyData.email)
-const [cnpj, setCnpj] = useState(companyData.cnpj)
+const {handleInsertExpense, companyData} = useContext(Context)
+const [description, setDescription] = useState("")
+const [value, setValue] = useState("")
+const [status, setStatus] = useState(companyData.cnpj)
 
 async function handleSubmit(){
-   const edited = await handleEditCompany({name, email, cnpj})
+   const edited = await handleInsertExpense({description, value, status})
 
 }
     return (
         <>
         <Container>
          <Label>Descrição</Label>
-         <Input onChange={(e: any) => setName(e.target.value)} value={name}></Input> 
+         <Input onChange={(e: any) => setDescription(e.target.value)} value={description}></Input> 
          <Label>Valor</Label>
-         <Input onChange={(e: any) => setEmail(e.target.value)} value={email}></Input> 
+         <Input onChange={(e: any) => setValue(e.target.value)} value={value}></Input> 
          <Label>Status</Label>
-         <Input onChange={(e: any) => setCnpj(e.target.value)} value={cnpj}></Input> 
+         <Input onChange={(e: any) => setStatus(e.target.value)} value={status}></Input> 
          <Button onClick={handleSubmit}>Confirmar alterações</Button>
         </Container>
         </>

@@ -7,6 +7,7 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import { Button } from './styles';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -64,8 +65,8 @@ export default function MovimentationsInfoAccordion({companySummary, setSelected
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          <><a onClick={() => {setSelectedDataComponent("movimentations"); setSelectedMovimentation("pedidos")}}>Pedidos</a><br></br></>
-          <><a onClick={() => {setSelectedDataComponent("movimentations"); setSelectedMovimentation("despesas")}}>Despesas</a><br></br></>
+          <><Button name="order" onClick={() => {setSelectedDataComponent("movimentations"); setSelectedMovimentation("pedidos")}}>Pedidos</Button><br></br></>
+          <><Button name="expenses" onClick={() => {setSelectedDataComponent("movimentations"); setSelectedMovimentation("despesas")}}>Despesas</Button><br></br></>
           </Typography>
         </AccordionDetails>
       </Accordion>

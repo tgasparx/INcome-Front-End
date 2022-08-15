@@ -19,7 +19,9 @@ else{
     return (
         <>
              {companySummary.expenses_summary.all_expenses.map((e: any) => {
-        return <ShowMovimentationsAccordion element={e}/>
+        return (
+          <ShowMovimentationsAccordion element={e}/>
+        ) 
       })}
         </>
     )

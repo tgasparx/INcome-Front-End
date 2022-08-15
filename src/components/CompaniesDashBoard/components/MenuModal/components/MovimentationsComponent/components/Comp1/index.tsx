@@ -5,11 +5,11 @@ import DataShowTable from "./Table";
 
 
 export default function Comp1(){
-const {companyEmployees} = useContext(Context)
+const {companySummary} = useContext(Context)
     return (
         <Container>
 
-<DataShowTable companyEmployees={companyEmployees}/>
+<DataShowTable companySummary={companySummary}/>
         </Container>
    
     )

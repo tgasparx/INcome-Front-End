@@ -7,6 +7,7 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import { Button } from './styles';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -64,7 +65,7 @@ export default function EmployeesInfoAccordion({companyEmployees, setSelectedDat
         <AccordionDetails>
           <Typography>
            {companyEmployees.employees.all_employees.map((e: any) => {
-            return <><a key={e.name} onClick={() => setSelectedDataComponent("employees")}>{e.name}</a><br key={e.cnpj}></br></>
+            return <><Button key={e.name} onClick={() => setSelectedDataComponent("employees")}>{e.name}</Button><br key={e.cnpj}></br></>
            })}
           </Typography>
         </AccordionDetails>

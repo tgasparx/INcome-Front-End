@@ -43,4 +43,12 @@ async insertNewEmployee({name, email, password, cpf}: any, token: string){
 async editEmployee(token: string, {newData}: any ){}
 async deleteEmployee(token: string, employeeCPF: string){}
 
+async insertOrder({description, value, status}: any, token: string){
+    const created = await api.post(`companies/orders/create/${token}`, {description, value, status})
+    return true
+}
+async insertExpense({description, value, status}: any, token: string){
+    const created = await api.post(`/companies/expenses/create/${token}`, {description, value ,status})
+    return created
+}
 }
