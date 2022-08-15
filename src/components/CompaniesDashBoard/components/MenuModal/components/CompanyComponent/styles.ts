@@ -21,5 +21,5 @@ flex-direction: column;
 //background-color: yellow;
 `;
 export const OptContent = styled.div`
-background-color: gray;
+//background-color: gray;
 `;

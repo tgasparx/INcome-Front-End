@@ -1,10 +1,16 @@
+import { useContext } from "react";
+import { Context } from "../../../../../../../../context";
+import { Container } from "./styles";
+import DataShowTable from "./Table";
 
 
 export default function Comp1(){
-
+const {companyEmployees} = useContext(Context)
     return (
-        <div>
-            Comp1
-        </div>
+        <Container>
+
+<DataShowTable companyEmployees={companyEmployees}/>
+        </Container>
+   
     )
 }

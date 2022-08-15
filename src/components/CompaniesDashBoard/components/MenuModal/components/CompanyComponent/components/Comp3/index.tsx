@@ -1,16 +1,17 @@
-
-
+import {Label, Container, Button, Input} from './styles'
 export function Comp3(){
 
     return (
         <>
-        <div>
-           <label>Senha antiga</label><br></br>
-           <input></input><br></br>
-           <label>Nova senha</label><br></br>
-           <input></input><br></br>
-           <button>Confirmar</button>
-        </div>
+        <Container>
+           <Label>Senha antiga</Label>
+           <Input value=""/>
+           <Label>Nova senha</Label>
+           <Input value=""/>
+           <Label>Repetir nova senha</Label>
+           <Input value=""/>
+           <Button>Confirmar</Button>
+        </Container>
         </>
     )
 }

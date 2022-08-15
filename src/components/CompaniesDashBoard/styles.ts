@@ -75,3 +75,12 @@ height: 100%;
 width: 100%;
 }
 `;
+export const Button = styled.button`
+height: 50px;
+border: none;
+background-color: gray;
+color: white;
+&:hover{
+    background-color: darkgray;
+}
+`;
