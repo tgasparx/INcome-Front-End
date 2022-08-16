@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { NoActionTr, Td, Th, Tr } from './styles';
 
 function createData(
   name: string,
@@ -26,34 +27,55 @@ const rows = [
 ];
 interface IDataShowTableProps{
   companySummary: any
+  selectedOrderId: any
+  setSelectedOrderId: any
 }
-export default function DataShowTable({companySummary}: IDataShowTableProps) {
+
+
+export default function DataShowTable({companySummary, selectedOrderId, setSelectedOrderId}: IDataShowTableProps) {
+ 
+
+
+function handleChangeSeletedOrder(orderId: string){
+  setSelectedOrderId(orderId)
+}
+
+
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
-          <TableRow style={{backgroundColor: "green"}}>
-          <TableCell>Descrição</TableCell>
-            <TableCell align="right">Valor</TableCell>
-            <TableCell align="right">Status</TableCell>
-            <TableCell align="right">Data de criação</TableCell>
-            <TableCell align="right">Data de atualização</TableCell>
-          </TableRow>
+          <NoActionTr>
+          <Th>Descrição</Th>
+            <Th align="right">Valor</Th>
+            <Th align="right">Status</Th>
+            <Th align="right">Data de criação</Th>
+            <Th align="right">Data de atualização</Th>
+          </NoActionTr>
         </TableHead>
         <TableBody>
+
+
           {companySummary.orders_summary.all_orders.map((element: any) => (
-            <TableRow
-              key={element.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            <Tr
+              key={element.expense_id}
+              element={element}
+              selectedOrderId={selectedOrderId}
+              onClick={() => {handleChangeSeletedOrder(element.order_id)}}
             >
-              <TableCell component="th" scope="row">
+              <Td>
                 {element.description}
-              </TableCell>
-              <TableCell align="right">{element.value}</TableCell>
-              <TableCell align="right">{element.status}</TableCell>
-              <TableCell align="right">{element.created_at}</TableCell>
-              <TableCell align="right">{element.updated_at}</TableCell>
-            </TableRow>
+              </Td>
+              <Td >{element.value}</Td>
+              <Td >{element.status}</Td>
+              <Td >{element.created_at}</Td>
+              <Td >{element.updated_at}</Td>
+            </Tr>
+
+
+
+
           ))}
         </TableBody>
       </Table>
