@@ -3,12 +3,10 @@ import { Context } from "../../context";
 import CompanyDataComponent from "./components/CompanyDataComponent";
 import EmployeesInfoAccordion from "./components/EmployeesInfoAccordion";
 import ExpensesGrafic from "./components/ExpensesGrafic";
-import MenuModal from "./components/MenuModal";
 import MovimentationsInfoAccordion from "./components/MovimentationsInfoAccordion";
 import { OrderEvolutionGrafic } from "./components/OrderEvolutionGrafic";
 import ShowEmployeesDataComponent from "./components/showEmployeesDataComponent";
 import ShowMovimentationsDataComponent from "./components/showMovimentationsDataComponent";
-import HeaderComp from "./components/showMovimentationsDataComponent/components/showMovimentationsAccordion/headerComp";
 import { Button, Container, DownContent, Left, Right, UpContent, UpLeft, UpRight } from "./styles";
 
 interface ICompaniesDashBoardProps{
@@ -51,7 +49,6 @@ function handleChangeSelectedDataComponent(){
             <MovimentationsInfoAccordion companySummary={companySummary} setSelectedDataComponent={setSelectedDataComponent} setSelectedMovimentation={setSelectedMovimentation}/>
         </Left>
         <Right>
-        <HeaderComp/>
         {handleChangeSelectedDataComponent()}
 
         </Right>

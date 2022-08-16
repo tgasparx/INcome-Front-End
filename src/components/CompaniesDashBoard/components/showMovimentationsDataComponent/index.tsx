@@ -1,4 +1,6 @@
-import ShowMovimentationsAccordion from "./components/showMovimentationsAccordion"
+import ShowExpensesAccordion from "./components/showExpensesAccordion"
+import ShowOrdersAccordion from "./components/showOrdersAccordion"
+import { ContainerTableHeader, ContainerTableHeaderExpenses } from "./styles"
 
 interface IShowMovimentationsDataComponent{
     companySummary: any
@@ -8,21 +10,56 @@ export default function ShowMovimentationsDataComponent({companySummary, selecte
 
 if(selectedMovimentation === "pedidos"){
     return (
-        <>
-      {companySummary.orders_summary.all_orders.map((e: any) => {
-        return <ShowMovimentationsAccordion element={e}/>
-      })}
-        </>
+      <>
+      <table style={{textAlign: "left"}}>
+       <thead>
+        <ContainerTableHeader>
+Pedidos
+        </ContainerTableHeader>
+      
+         <tr>
+     
+    
+         
+         </tr>
+       </thead>
+       <tbody>
+       {companySummary.orders_summary.all_orders.map((e: any) => {
+         return (
+           <tr>
+            <td> <ShowOrdersAccordion element={e}/></td>
+           </tr>
+         ) 
+       })}
+       </tbody>
+      </table>
+         </>
     )
 }
 else{
     return (
         <>
-             {companySummary.expenses_summary.all_expenses.map((e: any) => {
+     <table style={{textAlign: "left"}}>
+      <thead>
+        <ContainerTableHeaderExpenses>
+          Despesas
+        </ContainerTableHeaderExpenses>
+        
+        <tr>
+  
+        
+        </tr>
+      </thead>
+      <tbody>
+      {companySummary.expenses_summary.all_expenses.map((e: any) => {
         return (
-          <ShowMovimentationsAccordion element={e}/>
+          <tr>
+           <td> <ShowExpensesAccordion element={e}/></td>
+          </tr>
         ) 
       })}
+      </tbody>
+     </table>
         </>
     )
 }
