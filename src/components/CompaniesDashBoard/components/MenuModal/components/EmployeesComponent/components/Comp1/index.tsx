@@ -1,16 +1,23 @@
-import { useContext } from "react";
-import { Context } from "../../../../../../../../context";
 import { Container } from "./styles";
 import DataShowTable from "./Table";
 
-
-export default function Comp1(){
-const {companyEmployees} = useContext(Context)
-    return (
-        <Container>
-
-<DataShowTable companyEmployees={companyEmployees}/>
-        </Container>
-   
-    )
+interface IComp1Props {
+  setSelectedEmployeeId: any;
+  selectedEmployeeId: any;
+  companyEmployees: any;
+}
+export default function Comp1({
+  selectedEmployeeId,
+  setSelectedEmployeeId,
+  companyEmployees,
+}: IComp1Props) {
+  return (
+    <Container>
+      <DataShowTable
+        companyEmployees={companyEmployees}
+        selectedEmployeeId={selectedEmployeeId}
+        setSelectedEmployeeId={setSelectedEmployeeId}
+      />
+    </Container>
+  );
 }

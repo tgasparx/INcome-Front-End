@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { ActionTableButton, NoActionTr, Td, Th, Tr } from './styles';
 
 function createData(
   name: string,
@@ -26,34 +27,63 @@ const rows = [
 ];
 interface IDataShowTableProps{
     companyEmployees: any
+    selectedEmployeeId: any
+    setSelectedEmployeeId: any
 }
-export default function DataShowTable({companyEmployees}: IDataShowTableProps) {
+export default function DataShowTable({companyEmployees, selectedEmployeeId, setSelectedEmployeeId}: IDataShowTableProps) {
+
+function handleSelectEmployee(id: any){
+  setSelectedEmployeeId(id)
+  console.log(selectedEmployeeId)
+}
+
+
+
+
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Nome</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">CPF</TableCell>
-            <TableCell align="right">Data de contratação</TableCell>
-            <TableCell align="right">Data de atualização</TableCell>
-          </TableRow>
+        <TableHead >
+          <NoActionTr >
+            <Th>Nome</Th>
+            <Th align="right">Email</Th>
+            <Th align="right">CPF</Th>
+            <Th align="right">Data de contratação</Th>
+        
+          </NoActionTr>
         </TableHead>
         <TableBody>
           {companyEmployees.employees.all_employees.map((e: any) => (
-            <TableRow
+        
+                <Tr
               key={e.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              onClick={() => handleSelectEmployee(e.id)}
+              element={e}
+              selectedEmployeeId={selectedEmployeeId}
             >
-              <TableCell component="th" scope="row">
-                {e.name}
-              </TableCell>
-              <TableCell align="right">{e.email}</TableCell>
-              <TableCell align="right">{e.cpf}</TableCell>
-              <TableCell align="right">{e.created_at}</TableCell>
-              <TableCell align="right">{e.updated_at}</TableCell>
-            </TableRow>
+            
+                <Td>
+               {e.name}
+                </Td>
+                <Td>
+               {e.email}
+                </Td>
+                <Td>
+                {e.cpf}
+                </Td>
+                <Td>
+                {e.created_at}
+                </Td>
+           
+              
+           
+              
+               
+        
+            </Tr>
+          
+          
           ))}
         </TableBody>
       </Table>
