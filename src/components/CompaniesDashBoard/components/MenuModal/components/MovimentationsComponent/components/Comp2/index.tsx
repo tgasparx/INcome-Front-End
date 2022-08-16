@@ -24,7 +24,7 @@ async function handleSubmit(){
          <Input onChange={(e: any) => setValue(e.target.value)} value={value}></Input> 
          <Label>Status</Label>
          <Input onChange={(e: any) => setStatus(e.target.value)} value={status}></Input>
-         <Button onClick={handleSubmit}>Confirmar alterações</Button>
+         <Button onClick={handleSubmit}>Salvar</Button>
         </Container>
         </>
     )

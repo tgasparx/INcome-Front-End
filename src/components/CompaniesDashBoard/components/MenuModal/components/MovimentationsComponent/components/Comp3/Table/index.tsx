@@ -26,14 +26,15 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 interface IDataShowTableProps{
+  selectedExpenseId: any
+  setSelectedExpenseId: any
   companySummary: any
 }
-export default function DataShowTable({companySummary}: IDataShowTableProps) {
-  const [selectedOrderId, setSelectedOrderId] = React.useState("")
+export default function DataShowTable({companySummary, selectedExpenseId, setSelectedExpenseId}: IDataShowTableProps) {
 
 
-function handleChangeSeletedOrder(orderId: string){
-  setSelectedOrderId(orderId)
+function handleChangeSeletedOrder(expenseId: string){
+  setSelectedExpenseId(expenseId)
 }
 
 
@@ -53,12 +54,12 @@ function handleChangeSeletedOrder(orderId: string){
         <TableBody>
 
 
-          {companySummary.orders_summary.all_orders.map((element: any) => (
+          {companySummary.expenses_summary.all_expenses.map((element: any) => (
             <Tr
               key={element.order_id}
               element={element}
-              selectedOrderId={selectedOrderId}
-              onClick={() => {handleChangeSeletedOrder(element.order_id)}}
+              selectedExpenseId={selectedExpenseId}
+              onClick={() => {handleChangeSeletedOrder(element.expense_id)}}
             >
               <Td>
                 {element.description}

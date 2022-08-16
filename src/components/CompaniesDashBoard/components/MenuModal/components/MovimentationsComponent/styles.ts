@@ -10,10 +10,7 @@ min-height: 400px;
 background-color: lightgray;
 border-radius: 8px;
 box-shadow: 0.2px 1px 4px;
-@media (max-width: 600px) {
-    grid-template-columns: 1fr;
-grid-template-rows: 50%;
-}
+
 `;
 export const NavContent = styled.nav`
 display: flex;
@@ -27,3 +24,4 @@ justify-content: center;
 align-items: center;
 //background-color: gray;
 `;
+

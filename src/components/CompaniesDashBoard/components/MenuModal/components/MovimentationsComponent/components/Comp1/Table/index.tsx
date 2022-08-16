@@ -44,7 +44,7 @@ function handleChangeSeletedOrder(orderId: string){
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+      <Table size="small" aria-label="a dense table">
         <TableHead>
           <NoActionTr>
           <Th>Descrição</Th>

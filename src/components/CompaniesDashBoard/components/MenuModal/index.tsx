@@ -62,7 +62,7 @@ export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
             onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             style={customStyles}
-            contentLabel="Example Modal"
+            contentLabel=""
           >
             <Container>
             <BreadCrumbMenu setSelectedPortal={setSelectedPortal}/>

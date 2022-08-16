@@ -3,13 +3,16 @@ import { Context } from "../../../../../../../../context";
 import { Container } from "./styles";
 import DataShowTable from "./Table";
 
-
-export default function Comp3(){
+interface IComp3Props{
+    selectedExpenseId: any
+    setSelectedExpenseId: any
+}
+export default function Comp3({selectedExpenseId, setSelectedExpenseId}: IComp3Props){
 const {companySummary} = useContext(Context)
     return (
         <Container>
 
-<DataShowTable companySummary={companySummary}/>
+<DataShowTable companySummary={companySummary} selectedExpenseId={selectedExpenseId} setSelectedExpenseId={setSelectedExpenseId}/>
         </Container>
    
     )
