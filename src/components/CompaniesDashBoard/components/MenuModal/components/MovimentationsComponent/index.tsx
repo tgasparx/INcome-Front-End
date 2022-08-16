@@ -14,6 +14,7 @@ const [selectedOrderId, setSelectedOrderId] = useState("")
 const [selectedExpenseId, setSelectedExpenseId] = useState("")
 const [isOptModalOpen, setIsOptModalOpen] = useState(false)
 const [selectedOptComp, setSelectedOptComp] = useState<string>("")
+
     function controlSelectedComp(){
         switch (selectedComp) {
             case "comp1":
@@ -33,7 +34,9 @@ const [selectedOptComp, setSelectedOptComp] = useState<string>("")
     function controlOptModalExibition(){
    
         if(isOptModalOpen){
-            return <OptModal setIsOptModalOpen={setIsOptModalOpen} selectedOptComp={selectedOptComp}/>
+            return (
+                <OptModal selectedExpenseId={selectedExpenseId} selectedOrderId={selectedOrderId} setIsOptModalOpen={setIsOptModalOpen} selectedOptComp={selectedOptComp}/>
+            )
         }else{
             return <></>
         }
