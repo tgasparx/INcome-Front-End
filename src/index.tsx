@@ -7,7 +7,6 @@ import HomeCompanies from './pages/HomeCompanies';
 import HomeUsers from './pages/HomeUsers';
 import { GlobalStyle } from './globalStyles';
 import CompanyRegistryPage from './pages/CompanyRegistryPage';
-import UserRegistryPage from './pages/UserRegistryPage';
 import { ContextProvider } from './context';
 import Modal from 'react-modal';
 
@@ -25,7 +24,6 @@ root.render(
       
     <Route path="/" element={<App/>}/>
     <Route path="/companyRegistry" element={<CompanyRegistryPage/>}/>
-    <Route path="/userRegistry" element={<UserRegistryPage/>}/>
     <Route path="/homeCompanies" element={<HomeCompanies/>}/>
     <Route path="/homeUsers" element={<HomeUsers/>}/>
    
