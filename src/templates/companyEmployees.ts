@@ -7,7 +7,7 @@ export const templateCompanyEmployees = {
         perPage: 0,
         all_employees: [
             { 
-                name: "teste template",
+                name: "",
                 email: "",
                 cnpj: "",
                 summary: {}            

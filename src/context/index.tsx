@@ -7,6 +7,7 @@ import UsersService from "../services/UsersService/UsersService";
 import { templateCompanyData } from "../templates/companyData";
 import { templateCompanyEmployees } from "../templates/companyEmployees";
 import { templateCompanySummary } from "../templates/companySummary";
+import { templateUserSummary } from "../templates/UserSummary";
 
 export const Context = createContext({} as IContextData);
 export function ContextProvider({ children }: IContextProvider) {
@@ -18,6 +19,8 @@ export function ContextProvider({ children }: IContextProvider) {
     const [companyToken, setCompanyToken] = useState<any>(localStorage.getItem("CompanyToken"))
     const [userToken, setUserToken] = useState(localStorage.getItem("UserToken"))
     const [actualToken, setActualToken] = useState<any>("")
+    const [userSummary, setUserSummary] = useState(templateUserSummary)
+    const [userData, setUserData] = useState()
     console.log("contexttoken",companyToken)
 
     useEffect(() => {
@@ -91,8 +94,8 @@ export function ContextProvider({ children }: IContextProvider) {
         console.log(created)
         return true
     }
-    async function handleInsertOrder({description, value, status}: any){
-        const created = await companiesServices.insertOrder({description, value ,status}, companyToken)
+    async function handleInsertOrder({description, value, status, driver, km}: any){
+        const created = await companiesServices.insertOrder({description, value ,status, driver, km}, companyToken)
 
     }
     async function handleInsertExpense({description, value, status}: any){
@@ -107,6 +110,7 @@ const logged = await usersServices.userAuth({email, password}).then(response => 
 console.log(logged)
 if(logged){
     localStorage.setItem("UserToken", logged.token.tokenHash)
+    setUserData(logged)
     return true
 }else{
     return false
@@ -114,10 +118,14 @@ if(logged){
 }
 async function getSummaryUser(){
     const summary = await usersServices.userSummary(userToken)
+    console.log("responsesummary", summary)
+    setUserSummary(summary)
+
+    return true
 }
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense, handleSignUser }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData }}>
             {children}
         </Context.Provider>
     )

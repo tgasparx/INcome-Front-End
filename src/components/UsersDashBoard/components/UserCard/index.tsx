@@ -1,18 +1,20 @@
 import { ContainerAvatar, ContainerName, Down, Up} from "./styles";
 
 
-
-export default function UserCard(){
+interface IUserCardProps{
+  userData: any
+}
+export default function UserCard({userData}: IUserCardProps){
 
 
     return (
         <>
           <Up>
                 <ContainerAvatar>Foto</ContainerAvatar>
-                <ContainerName>NOme</ContainerName>
+                <ContainerName>{userData.name}</ContainerName>
             </Up>
             <Down>
-              Profissão: Motorista
+              Profissão: {userData.function}
             </Down>
         </>
     )

@@ -15,4 +15,7 @@ export default interface IContextData{
     handleInsertOrder: ({description, value, status}: any) => any
     handleInsertExpense: ({description, value, status}: any) => any
     handleSignUser: any
+    getSummaryUser: any
+    userSummary: any
+    userData: any
 }

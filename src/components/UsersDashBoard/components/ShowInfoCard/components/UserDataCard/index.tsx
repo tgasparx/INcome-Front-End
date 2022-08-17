@@ -1,14 +1,16 @@
 import { Container, ShowData } from "./styles";
 
-
-export default function UserDataCard(){
+interface IUserDataCardProps{
+    userData: any
+}
+export default function UserDataCard({userData}: IUserDataCardProps){
 
     return (
        <Container>
-        <ShowData><span>Nome</span> <span>Francisco</span></ShowData>
-        <ShowData><span>Email</span> <span>francisco@mail</span></ShowData>
-        <ShowData><span>CPF</span> <span>124512</span></ShowData>
-        <ShowData><span>Profissão</span> <span>Motorista</span></ShowData>
+        <ShowData><span>Nome</span> <span>{userData.name}</span></ShowData>
+        <ShowData><span>Email</span> <span>{userData.email}</span></ShowData>
+        <ShowData><span>CPF</span> <span>{userData.cpf}</span></ShowData>
+        <ShowData><span>Profissão</span> <span>{userData.function}</span></ShowData>
        </Container>
     )
 }

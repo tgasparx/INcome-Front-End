@@ -11,7 +11,6 @@ const navigate = useNavigate()
         <>
      <Container>
         <LeftContent>
-            <MenuButton onClick={() => setIsOpen(true)}><TiThMenu size="30px" color="white"/></MenuButton>
         
         </LeftContent>
         <RightContent>

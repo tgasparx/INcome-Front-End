@@ -6,7 +6,8 @@ export default class UsersService{
         return logged
     }
     async userSummary(token: any){
-
+const summary = await api.get(`/users/summary/${token}`).then(response => response.data)
+return summary
 
     }
 }

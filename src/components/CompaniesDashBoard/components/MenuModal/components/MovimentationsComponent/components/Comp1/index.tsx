@@ -8,11 +8,11 @@ interface IComp1Props{
     setSelectedOrderId: any
 }
 export default function Comp1({selectedOrderId, setSelectedOrderId}: IComp1Props){
-const {companySummary} = useContext(Context)
+const {companySummary, companyEmployees} = useContext(Context)
     return (
         <Container>
 
-<DataShowTable companySummary={companySummary} selectedOrderId={selectedOrderId} setSelectedOrderId={setSelectedOrderId}/>
+<DataShowTable companyEmployees={companyEmployees} companySummary={companySummary} selectedOrderId={selectedOrderId} setSelectedOrderId={setSelectedOrderId}/>
         </Container>
    
     )

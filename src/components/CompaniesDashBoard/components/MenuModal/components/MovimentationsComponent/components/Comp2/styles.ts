@@ -41,3 +41,8 @@ border-radius: 5px;
     background-color: darkblue;
 }
 `;
+export const Select = styled.select`
+width: 200px;
+
+`;
+export const Option = styled.option``;

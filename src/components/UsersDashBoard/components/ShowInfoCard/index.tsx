@@ -3,22 +3,25 @@ import UserDataCard from "./components/UserDataCard";
 import { Down, ContainerFlag, Info, Up, ContentFlag } from "./styles";
 
 
-
-export default function ShowInfoCard(){
+interface IShowInfoCardProps{
+    userSummary: any
+    userData: any
+}
+export default function ShowInfoCard({userSummary, userData}: IShowInfoCardProps){
 
 const data = [
     {
-        value: "345",
+        value: `${userSummary.total_km}`,
         tag: "Qulômetros",
         description: "Total de quilõmetros percorridos"    
     },
     {
-        value: "28",
+        value: `${userSummary.total_pedidos}`,
         tag: "Pedidos",
         description: "Total de pedidos"    
     },
     {
-        value: "25",
+        value: `${userSummary.total_pedidos_finalizados}`,
         tag: "Pedidos",
         description: "Total de pedidos concluídos"    
     }
@@ -42,7 +45,7 @@ const data = [
         </Info>
                 {/* Info -=- Dados do usuario*/}
         <Info>
-        <UserDataCard/>
+        <UserDataCard userData={userData}/>
         </Info>
         </>
     )

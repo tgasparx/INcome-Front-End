@@ -29,18 +29,17 @@ interface IDataShowTableProps{
   companySummary: any
   selectedOrderId: any
   setSelectedOrderId: any
+  companyEmployees: any
 }
 
 
-export default function DataShowTable({companySummary, selectedOrderId, setSelectedOrderId}: IDataShowTableProps) {
+export default function DataShowTable({companySummary, selectedOrderId, setSelectedOrderId, companyEmployees}: IDataShowTableProps) {
  
 
 
 function handleChangeSeletedOrder(orderId: string){
   setSelectedOrderId(orderId)
 }
-
-
 
   return (
     <TableContainer component={Paper}>
@@ -50,8 +49,9 @@ function handleChangeSeletedOrder(orderId: string){
           <Th>Descrição</Th>
             <Th align="right">Valor</Th>
             <Th align="right">Status</Th>
+            <Th align="right">Motorista</Th>
+            <Th align="right">KM</Th>
             <Th align="right">Data de criação</Th>
-            <Th align="right">Data de atualização</Th>
           </NoActionTr>
         </TableHead>
         <TableBody>
@@ -69,8 +69,12 @@ function handleChangeSeletedOrder(orderId: string){
               </Td>
               <Td >{element.value}</Td>
               <Td >{element.status}</Td>
+              <Td>{element.driver}</Td>
+             
+
+            
+              <Td >{element.km}</Td>
               <Td >{element.created_at}</Td>
-              <Td >{element.updated_at}</Td>
             </Tr>
 
 
