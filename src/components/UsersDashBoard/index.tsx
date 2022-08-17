@@ -1,29 +1,35 @@
-import { Container, Content, ContentInfoLeft, ContentInfoRight, Info1, Info2, Info3, Info4} from "./styles";
-import { Kbd } from '@chakra-ui/react'
+import ShowInfoCard from "./components/ShowInfoCard";
+import { Info } from "./components/ShowInfoCard/styles";
+import UserCard from "./components/UserCard";
+import { Container, Content, ContentInfoLeft, ContentInfoRight} from "./styles";
+
+
 
 export default function UsersDashBoard(){
-
+ 
 
     return (
         <>
       <Container>
         <Content>
             <ContentInfoLeft>
-            <span>
-  <Kbd>Nome: </Kbd> 
-</span>
-                Nome: <br></br>
-                Email: <br></br>
-                Função: <br></br>
+          <UserCard/>
+
             </ContentInfoLeft>
             <ContentInfoRight>
-                <Info1>Total KM Percorridos</Info1>
-                <Info1>Total de pedidos recebidos</Info1>
-                <Info3>Total de pedidos finalizados</Info3>
-                <Info4>Total de dias trabalhados</Info4>
+               <ShowInfoCard/>
+ 
             </ContentInfoRight>
         </Content>
       </Container>
         </>
     )
 }
+
+
+
+
+
+
+
+
