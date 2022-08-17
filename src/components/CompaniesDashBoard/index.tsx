@@ -1,13 +1,11 @@
 import { useContext, useState } from "react";
 import { Context } from "../../context";
 import CompanyDataComponent from "./components/CompanyDataComponent";
-import EmployeesInfoAccordion from "./components/EmployeesInfoAccordion";
-import ExpensesGrafic from "./components/ExpensesGrafic";
 import MovimentationsInfoAccordion from "./components/MovimentationsInfoAccordion";
 import { OrderEvolutionGrafic } from "./components/OrderEvolutionGrafic";
 import ShowEmployeesDataComponent from "./components/showEmployeesDataComponent";
 import ShowMovimentationsDataComponent from "./components/showMovimentationsDataComponent";
-import { Button, Container, DownContent, Left, Right, UpContent, UpLeft, UpRight } from "./styles";
+import { Button, Container, DownContent, Left, Right, UpContent, UpLeft } from "./styles";
 
 interface ICompaniesDashBoardProps{
     companySummary: any
@@ -21,13 +19,13 @@ const [modalIsOpen, setIsOpen] = useState(false);
 function handleChangeSelectedDataComponent(){
     switch (selectedDataComponent) {
         case "company":
-            return <CompanyDataComponent companyData={companyData}/>
+            return <CompanyDataComponent companySummary={companySummary} companyEmployees={companyEmployees} companyData={companyData}/>
         case "employees":
             return <ShowEmployeesDataComponent companyEmployees={companyEmployees}/>
         case "movimentations":
             return <ShowMovimentationsDataComponent companySummary={companySummary} selectedMovimentation={selectedMovimentation}/>
         default:
-            return <CompanyDataComponent companyData={companyData}/>
+            return <CompanyDataComponent companySummary={companySummary} companyEmployees={companyEmployees} companyData={companyData}/>
     }
 }
 
@@ -36,16 +34,13 @@ function handleChangeSelectedDataComponent(){
        <Container>
         <UpContent>
             <UpLeft>
-            <OrderEvolutionGrafic/>
+            <OrderEvolutionGrafic companySummary={companySummary}/>
             </UpLeft>
-            <UpRight>
-                <ExpensesGrafic/>
-            </UpRight>
         </UpContent>
         <DownContent>
         <Left>
-            <Button onClick={() => setSelectedDataComponent("company")}>Companhia</Button>
-            <EmployeesInfoAccordion companyEmployees={companyEmployees} setSelectedDataComponent={setSelectedDataComponent}/>
+            <Button id="company" onClick={() => setSelectedDataComponent("company")}>Companhia</Button>
+            <Button id="employees" onClick={() => setSelectedDataComponent("employees")}>Funcionários</Button>
             <MovimentationsInfoAccordion companySummary={companySummary} setSelectedDataComponent={setSelectedDataComponent} setSelectedMovimentation={setSelectedMovimentation}/>
         </Left>
         <Right>

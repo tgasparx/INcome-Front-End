@@ -1,26 +1,30 @@
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { useState } from 'react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
 
-const data = [
-    { name: 'Sem 1', uv: 100000, pv: 2400, amt: 2400 },
-    { name: 'Sem 2', uv: 180000, pv: 2400, amt: 2200 },
-    { name: 'Sem 3', uv: 100000, pv: 2400, amt: 2100 },
-    { name: 'Sem 4', uv: 160000, pv: 2400, amt: 2000 },
-    { name: 'Sem 5', uv: 100000, pv: 2400, amt: 1900 },
-    { name: 'Sem 5', uv: 200000, pv: 2400, amt: 1800 }
-];
-
-
-export function OrderEvolutionGrafic() {
-
+interface IOrderEvolutionGraficProps{
+    companySummary: any
+}
+export function OrderEvolutionGrafic({companySummary}: IOrderEvolutionGraficProps) {
+    const [viewPortWidth, setViewPortWidth] = useState<number>(window.innerWidth)
+    const data = [
+        { name: '05/06-12/06', Faturamento: 100000, pv: 2400, amt: 2000 },
+        { name: '19/06-26/06', Faturamento: 180000, pv: 2400, amt: 2000 },
+        { name: '03/07-10/07', Faturamento: 100000, pv: 2400, amt: 2000 },
+        { name: '17/07-24/07', Faturamento: 160000, pv: 2400, amt: 2000 },
+        { name: '31/07-07/08', Faturamento: 100000, pv: 2400, amt: 2000 },
+        { name: '08/08-15/08', Faturamento: 200000, pv: 2400, amt: 2000 }
+    ];
 
     return (
         <>
-             <LineChart width={320} height={300} data={data}>
-    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-    <CartesianGrid stroke="#ccc" />
-    <XAxis dataKey="name" />
+  <BarChart width={(viewPortWidth * 0.8)} height={300} data={data}>
+    <XAxis dataKey="name" stroke="#0a00d2" />
     <YAxis />
-  </LineChart>
+    <Tooltip  wrapperStyle={{ width: 200, backgroundColor: '#ccc' }} />
+    <Legend  width={100} wrapperStyle={{ top: 40, right: 20, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px', width: "200px" }} />
+    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+    <Bar dataKey="Faturamento" fill="#2b21e7" barSize={30} />
+  </BarChart>
         </>
     )
 }

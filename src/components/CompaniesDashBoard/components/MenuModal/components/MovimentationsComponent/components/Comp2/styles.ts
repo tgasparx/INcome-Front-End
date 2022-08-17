@@ -8,6 +8,7 @@ width: 100%;
 display: flex;
 flex-direction: column;
 padding: 10px auto;
+margin-left: 10%;
 
 
 

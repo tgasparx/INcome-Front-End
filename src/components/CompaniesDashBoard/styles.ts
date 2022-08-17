@@ -20,26 +20,15 @@ width: 100%;
 height: 50%;
 background-color: snow;
 
-@media (max-width: 700px) {
-    flex-direction: column;
-}
 `;
 export const UpLeft = styled.div`
 justify-content: center;
 align-items: center;
-width: 50%;
+width: 100%;
 height: 100%;
 display: flex;
 flex-direction: row;
 
-`;
-export const UpRight = styled.div`
-justify-content: center;
-align-items: center;
-width: 50%;
-height: 100%;
-display: flex;
-flex-direction: row;
 `;
 export const DownContent = styled.section`
 display: flex;
@@ -75,12 +64,15 @@ height: 100%;
 width: 100%;
 }
 `;
-export const Button = styled.button`
+interface IButtonProps{
+    id: any
+}
+export const Button = styled.button<IButtonProps>`
 height: 50px;
 border: none;
-background-color: gray;
+background-color: ${(props) => props.id === "company" ? "gray" : "blue"};
 color: white;
 &:hover{
-    background-color: darkgray;
+    background-color: ${(props) => props.id === "company" ? "darkgray" : "darkblue"};
 }
 `;

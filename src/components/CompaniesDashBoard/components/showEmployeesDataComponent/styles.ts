@@ -1,50 +1,26 @@
 import styled from 'styled-components'
 
-
-
-export const Container = styled.div`
-width: 95%;
-height: 95%;
+export const ContainerTableHeader = styled.div`
 display: flex;
 flex-direction: row;
-padding-bottom: 5px;
-
-
+align-items: center;
+justify-content: right;
+width: 100%;
+height: 40px;
+background-color: green;
+color: white;
+padding-right: 30px;
 `;
 
-export const LeftContent = styled.div`
-width: 30%;
-height: 100%;
+export const ContainerTableHeaderExpenses = styled.div`
 display: flex;
-flex-direction: column;
-span{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 25px;
-    margin-top: 3px;
-    border-radius: 3px;
-    background-color: white;
-    padding-left: 5px;
-}
+flex-direction: row;
+align-items: center;
+justify-content: right;
+width: 100%;
+height: 40px;
+background-color: blue;
+color: white;
+padding-right: 30px;
 
-`;
-export const RightContent = styled.div`
-color: blue;
-width: 70%;
-height: 100%;
-display: flex;
-flex-direction: column;
-span{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 25px;
-    margin-top: 3px;
-    background-color: white;
-    border-radius: 3px;
-    padding-left: 5px;
-}
 `;

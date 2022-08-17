@@ -1,36 +1,37 @@
-import { Container, LeftContent, RightContent } from "./styles";
+import ShowEmployeesAccordion from "./components/showEmployeesAccordion"
+import { ContainerTableHeader, ContainerTableHeaderExpenses } from "./styles"
 
-interface IShowEmployeesDataComponentProps{
+interface IShowMovimentationsDataComponent{
     companyEmployees: any
 }
-export default function ShowEmployeesDataComponent({companyEmployees}: IShowEmployeesDataComponentProps){
+export default function ShowEmployeesDataComponent({companyEmployees}: IShowMovimentationsDataComponent){
 
-console.log(companyEmployees)
+
+
     return (
         <>
-     <Container>
-        <LeftContent>
-            <span>id:</span>
-            <span>Nome:</span>
-            <span>Email:</span>
-            <span>CPF:</span>
-            <span>Data de contratação:</span>
-            <span>Data de atualização:</span>
-
-
-        </LeftContent>
-        <RightContent>
-            <span>{companyEmployees.employees.all_employees[0].id}</span>
-            <span>{companyEmployees.employees.all_employees[0].name}</span>
-            <span>{companyEmployees.employees.all_employees[0].email}</span>
-            <span>{companyEmployees.employees.all_employees[0].cpf}</span>
-            <span>{companyEmployees.employees.all_employees[0].created_at}</span>
-            <span>{companyEmployees.employees.all_employees[0].updated_at}</span>
-
-
-
-        </RightContent>
-     </Container>
+     <table style={{textAlign: "left"}}>
+      <thead>
+        <ContainerTableHeaderExpenses>
+          Funcionários
+        </ContainerTableHeaderExpenses>
+        
+        <tr>
+  
+        
+        </tr>
+      </thead>
+      <tbody>
+      {companyEmployees.employees.all_employees.map((e: any) => {
+        return (
+          <tr>
+           <td> <ShowEmployeesAccordion element={e}/></td>
+          </tr>
+        ) 
+      })}
+      </tbody>
+     </table>
         </>
     )
 }
+

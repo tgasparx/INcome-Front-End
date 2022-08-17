@@ -1,4 +1,5 @@
-import { Container, ContainerTopCloseFlag, Content, ContentTopCloseFlag } from "./styles"
+import StyledButton from "./components/button"
+import { Container, ContainerTopCloseFlag, Content, ContentTopCloseFlag, Down, DownLeft, DownRight, Input, Label, Select, Span, Up, UpLeft, UpRight } from "./styles"
 
 interface IEditOrderCompProps{
     setIsOptModalOpen: any
@@ -6,44 +7,53 @@ interface IEditOrderCompProps{
 }
 export default function EditOrderComp({setIsOptModalOpen, order}: IEditOrderCompProps){
 
-    return <Container onMouseLeave={() => setIsOptModalOpen(false)}>
+    return <Container >
         <ContainerTopCloseFlag
         >
             <ContentTopCloseFlag>
-                <button onClick={() => setIsOptModalOpen(false)}> X <br></br>Fechar</button>
+                <button onClick={() => setIsOptModalOpen(false)}> X</button>
             </ContentTopCloseFlag>
         </ContainerTopCloseFlag>
         <Content>
-            <div>
-                Header
-            </div>
-         <div>
-         <div>
-                ID:<br></br>
-                Descrição:<br></br>
-                Valor:<br></br>
-                Status:<br></br>
-                Data de criação:<br></br>
-                Data de atualização:<br></br>
-            </div>
-            <div>
-            {order.order_id}<br></br>
-            {order.description}<br></br>
-            {order.value}<br></br>
-            {order.status}<br></br>
-            {order.created_at}<br></br>
-            {order.updated_at}<br></br>
-            </div>
-         </div>
-         <div>
-            <label>Descrição</label>
-            <input></input>
-            <label>Valor</label>
-            <input></input>
-            <label>Status</label>
-            <input></input>
-            <button>Confirmar alterações</button>
-         </div>
+     <Up>
+     <UpLeft>
+           <Span> ID:</Span>
+            <Span>Descrição:</Span>
+            <Span>Valor:</Span>
+            <Span>Status:</Span>
+            <Span>Data de criação:</Span>
+            <Span>Data de atualização:</Span>
+        </UpLeft>
+        <UpRight>
+           <Span> {order.order_id}</Span>
+            <Span>{order.description}</Span>
+           <Span> {order.value}</Span>
+            <Span>{order.status}</Span>
+            <Span>{order.created_at}</Span>
+            <Span>{order.updated_at}</Span>
+        </UpRight>
+     </Up>
+     <Down>
+     <DownLeft>
+<Label>Descrição</Label>
+<Input/>
+<Label>Valor</Label>
+<Input/>
+<Label>Status</Label>
+<Select >
+    <option value="Concluido">Concluído</option>
+    <option value="Pendente">Pendente</option>
+</Select>
+
+
+
+     </DownLeft>
+        <DownRight>
+
+           <StyledButton text="Confirmar" onClick={() => {}}/>
+           
+                   </DownRight>
+     </Down>
       
         </Content>
     

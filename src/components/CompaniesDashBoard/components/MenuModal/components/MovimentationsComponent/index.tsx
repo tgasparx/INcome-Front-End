@@ -5,7 +5,7 @@ import Comp3 from "./components/Comp3";
 import Comp4 from "./components/Comp4";
 import MenuButtons from "./components/MenuButton";
 import OptModal from "./components/optModal";
-import { Container, NavContent, OptContent } from "./styles";
+import { Container, ExpenseHeader, NavContent, OptContent, OrderHeader } from "./styles";
 
 
 export default function MovimentationsComponent(){
@@ -74,15 +74,20 @@ function handledeleteExpense(){
         <Container>
            {controlOptModalExibition()}
         <NavContent>
-   
-            <MenuButtons onClick={() => {setSelectedComp("comp1"); setSelectedOrderId(""); setSelectedExpenseId("")}} text="Pedidos"/>
-            <MenuButtons onClick={() => {setSelectedComp("comp2"); setSelectedOrderId(""); setSelectedExpenseId("")}} text="Adicionar Pedido"/>
-            <MenuButtons onClick={() => {setSelectedComp("comp1"); handleEditOrder(); setSelectedOptComp("edit-order")}} text="Editar Pedido"/>
-            <MenuButtons onClick={() =>{ setSelectedComp("comp1"); handleDeleteOrder(); setSelectedOptComp("delete-order")}} text="Excluir pedido"/>
-            <MenuButtons onClick={() => {setSelectedComp("comp3"); setSelectedOrderId(""); setSelectedExpenseId("")}} text="Despesas"/>
-            <MenuButtons onClick={() => {setSelectedComp("comp4"); setSelectedOrderId(""); setSelectedExpenseId("")}} text="Adicionar despesa"/>
-            <MenuButtons onClick={() => {setSelectedComp("comp3"); handleEditExpense(); setSelectedOptComp("edit-expense")}} text="Editar despesa"/>
-            <MenuButtons onClick={() => {setSelectedComp("comp3"); handledeleteExpense(); setSelectedOptComp("delete-expense")}} text="Excluir despesa"/>
+            <OrderHeader>
+            <h4>Pedidos</h4>
+            </OrderHeader>
+            <MenuButtons refer="order" onClick={() => {setSelectedComp("comp1"); setSelectedOrderId(""); setSelectedExpenseId("")}} text="Pedidos"/>
+            <MenuButtons refer="order" onClick={() => {setSelectedComp("comp2"); setSelectedOrderId(""); setSelectedExpenseId("")}} text="Adicionar Pedido"/>
+            <MenuButtons refer="order" onClick={() => {setSelectedComp("comp1"); handleEditOrder(); setSelectedOptComp("edit-order")}} text="Editar Pedido"/>
+            <MenuButtons refer="order" onClick={() =>{ setSelectedComp("comp1"); handleDeleteOrder(); setSelectedOptComp("delete-order")}} text="Excluir pedido"/>
+            <ExpenseHeader>
+            <h4>Despesas</h4>
+            </ExpenseHeader>
+            <MenuButtons refer="expense" onClick={() => {setSelectedComp("comp3"); setSelectedOrderId(""); setSelectedExpenseId("")}} text="Despesas"/>
+            <MenuButtons refer="expense" onClick={() => {setSelectedComp("comp4"); setSelectedOrderId(""); setSelectedExpenseId("")}} text="Adicionar despesa"/>
+            <MenuButtons refer="expense" onClick={() => {setSelectedComp("comp3"); handleEditExpense(); setSelectedOptComp("edit-expense")}} text="Editar despesa"/>
+            <MenuButtons refer="expense" onClick={() => {setSelectedComp("comp3"); handledeleteExpense(); setSelectedOptComp("delete-expense")}} text="Excluir despesa"/>
    
         </NavContent>
         <OptContent>
