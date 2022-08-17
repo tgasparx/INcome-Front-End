@@ -16,6 +16,7 @@ export function ContextProvider({ children }: IContextProvider) {
     const [companyData, setCompanyData] = useState(templateCompanyData)
     const [companyEmployees, setCompanyEmployees] = useState(templateCompanyEmployees)
     const [companyToken, setCompanyToken] = useState<any>(localStorage.getItem("CompanyToken"))
+    const [userToken, setUserToken] = useState(localStorage.getItem("UserToken"))
     const [actualToken, setActualToken] = useState<any>("")
     console.log("contexttoken",companyToken)
 
@@ -110,6 +111,9 @@ if(logged){
 }else{
     return false
 }
+}
+async function getSummaryUser(){
+    const summary = await usersServices.userSummary(userToken)
 }
     // END USERS
     return (

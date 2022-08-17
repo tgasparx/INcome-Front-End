@@ -1,5 +1,5 @@
 import { Container, Content, ContentInfoLeft, ContentInfoRight, Info1, Info2, Info3, Info4} from "./styles";
-
+import { Kbd } from '@chakra-ui/react'
 
 export default function UsersDashBoard(){
 
@@ -9,6 +9,9 @@ export default function UsersDashBoard(){
       <Container>
         <Content>
             <ContentInfoLeft>
+            <span>
+  <Kbd>Nome: </Kbd> 
+</span>
                 Nome: <br></br>
                 Email: <br></br>
                 Função: <br></br>

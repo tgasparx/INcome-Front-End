@@ -5,5 +5,8 @@ export default class UsersService{
         const logged = await api.post("/users/auth", {email, password})
         return logged
     }
-    async userSummary(token: string, employeeCPF: string){}
+    async userSummary(token: any){
+
+
+    }
 }
