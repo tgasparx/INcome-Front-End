@@ -1,14 +1,13 @@
-import Header from "../../components/Header";
 import UsersDashBoard from "../../components/UsersDashBoard";
 import { useContext, useEffect } from "react";
-import CompaniesDashboard from "../../components/CompaniesDashBoard";
 import { Context } from "../../context";
 import {useNavigate} from 'react-router-dom'
+import  Header  from "../../components/Users-Header";
 
 
 export default function HomeUsers(){
   const { checkToken } = useContext(Context)
-  const token = localStorage.getItem("CompanyToken") || ""
+  const token = localStorage.getItem("UserToken") || ""
   const navigate = useNavigate()
   async function checkValidToken() {
     const isValid = await checkToken(token)

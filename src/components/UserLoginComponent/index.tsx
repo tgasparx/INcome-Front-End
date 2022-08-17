@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Context } from '../../context';
+import { useNavigate } from 'react-router';
 
 
 function Copyright(props: any) {
@@ -30,13 +32,23 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function UserLoginPage() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate()
+  const {handleSignUser} = React.useContext(Context)
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
+    const email = data.get('email')
+    const password = data.get('password')
+    const logged = await handleSignUser({email, password})
+    if(logged){
+      navigate("/homeUsers")
+    }else{
+      window.alert("enderço ou senha incorretos")
+    }
   };
 
   return (

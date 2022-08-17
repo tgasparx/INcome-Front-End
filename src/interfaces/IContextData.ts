@@ -14,4 +14,5 @@ export default interface IContextData{
     handleCreateNewEmployee: any
     handleInsertOrder: ({description, value, status}: any) => any
     handleInsertExpense: ({description, value, status}: any) => any
+    handleSignUser: any
 }

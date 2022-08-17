@@ -3,6 +3,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import IContextData from "../interfaces/IContextData";
 import IContextProvider from "../interfaces/IContextProvider";
 import CompaniesService from "../services/CompaniesService/CompaniesService";
+import UsersService from "../services/UsersService/UsersService";
 import { templateCompanyData } from "../templates/companyData";
 import { templateCompanyEmployees } from "../templates/companyEmployees";
 import { templateCompanySummary } from "../templates/companySummary";
@@ -10,6 +11,7 @@ import { templateCompanySummary } from "../templates/companySummary";
 export const Context = createContext({} as IContextData);
 export function ContextProvider({ children }: IContextProvider) {
     const companiesServices = new CompaniesService()
+    const usersServices = new UsersService()
     const [companySummary, setCompanySummary] = useState(templateCompanySummary)
     const [companyData, setCompanyData] = useState(templateCompanyData)
     const [companyEmployees, setCompanyEmployees] = useState(templateCompanyEmployees)
@@ -98,10 +100,20 @@ export function ContextProvider({ children }: IContextProvider) {
     }
     //END COMPANIES
     // START USERS
-
+async function handleSignUser({ email, password }: any){
+console.log("sign", email, password)
+const logged = await usersServices.userAuth({email, password}).then(response => response.data)
+console.log(logged)
+if(logged){
+    localStorage.setItem("UserToken", logged.token.tokenHash)
+    return true
+}else{
+    return false
+}
+}
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense, handleSignUser }}>
             {children}
         </Context.Provider>
     )
