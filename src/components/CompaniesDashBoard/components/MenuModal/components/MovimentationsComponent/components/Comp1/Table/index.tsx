@@ -34,6 +34,10 @@ export default function DataShowTable({
     setSelectedOrderId(orderId);
   }
 
+  function returnEmployeeName(employeeId: string){
+    const name = companyEmployees.employees.all_employees.filter((e:any) => e.id === employeeId)
+    return <>{name[0].name}</>
+  }
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
@@ -60,7 +64,7 @@ export default function DataShowTable({
               <Td >{element.description}</Td>
               <Td >{element.value}</Td>
               <Td >{element.status}</Td>
-              <Td >{element.driver}</Td>
+              <Td >{returnEmployeeName(element.driver)}</Td> 
 
               <Td>{element.km} </Td>
               <Td >{element.created_at}</Td>

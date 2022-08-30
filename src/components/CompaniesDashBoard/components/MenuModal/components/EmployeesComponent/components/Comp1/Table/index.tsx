@@ -56,7 +56,7 @@ function handleSelectEmployee(id: any){
           {companyEmployees.employees.all_employees.map((e: any) => (
         
                 <Tr
-              key={e.name}
+              key={e.id}
               onClick={() => handleSelectEmployee(e.id)}
               element={e}
               selectedEmployeeId={selectedEmployeeId}

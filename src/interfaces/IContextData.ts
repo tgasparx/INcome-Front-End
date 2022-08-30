@@ -19,5 +19,6 @@ export default interface IContextData{
     userSummary: any
     userData: any
     handleChangePassword: ({password, newPassword}: any) => Promise<any>
-    handleEditOrder: ({description, value, status}: any, orderId: string) => Promise<any>
+    handleEditOrder: ({description, value, status, driver}: any, orderId: string) => Promise<any>
+    handleEditExpense: ({description, value, status}: any, expenseId: string) => Promise<any>
 }

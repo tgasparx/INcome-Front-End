@@ -15,6 +15,7 @@ const [km, setKm] = useState("")
 
 async function handleSubmit(){
    const inserted = await handleInsertOrder({description, value, status, driver, km})
+   window.location.href = "/homeCompanies"
 
 
 }

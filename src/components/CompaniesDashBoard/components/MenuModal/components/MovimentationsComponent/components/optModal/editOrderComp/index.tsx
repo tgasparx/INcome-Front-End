@@ -8,17 +8,22 @@ interface IEditOrderCompProps{
     order: any
 }
 export default function EditOrderComp({setIsOptModalOpen, order}: IEditOrderCompProps){
-    const {handleEditOrder} = useContext(Context)
+    const {handleEditOrder, companyEmployees} = useContext(Context)
 const [description, setDescription] = useState(order.description)
 const [value, setValue] = useState(order.value)
 const [status, setStatus] = useState(order.status)
+const [driver, setDriver] = useState(order.driver)
+const [km, setKm] = useState(order.km)
 
 
 async function handleSubmit(){
-const edited = await handleEditOrder({description, value ,status}, order.id)
+const edited = await handleEditOrder({description, value ,status, driver, km}, order.id)
 window.location.href = "/homeCompanies"
 }
-
+function returnEmployeeName(employeeId: string){
+    const name = companyEmployees.employees.all_employees.filter((e:any) => e.id === employeeId)
+return <>{name[0].name}</>
+}
     return <Container >
         <ContainerTopCloseFlag
         >
@@ -32,6 +37,8 @@ window.location.href = "/homeCompanies"
            <Span> ID:</Span>
             <Span>Descrição:</Span>
             <Span>Valor:</Span>
+            <Span>Motorista:</Span>
+            <Span>KM:</Span>
             <Span>Status:</Span>
             <Span>Data de criação:</Span>
             <Span>Data de atualização:</Span>
@@ -40,6 +47,8 @@ window.location.href = "/homeCompanies"
            <Span> {order.order_id}</Span>
             <Span>{order.description}</Span>
            <Span> {order.value}</Span>
+           <Span>{returnEmployeeName(order.driver)}</Span>
+           <Span>{order.km}</Span>
             <Span>{order.status}</Span>
             <Span>{order.created_at}</Span>
             <Span>{order.updated_at}</Span>
@@ -51,8 +60,18 @@ window.location.href = "/homeCompanies"
 <Input value={description} onChange={(e:any) => setDescription(e.target.value)}/>
 <Label>Valor</Label>
 <Input value ={value} onChange={(e:any) => setValue(e.target.value)}/>
+<Label>Motorista</Label>
+<Select onChange={(e:any) => setDriver(e.target.value)} defaultValue={status}>
+    {companyEmployees.employees.all_employees.map((e: any) => {
+        return (
+          <option key={e.id} value={e.id}>{e.name}</option>
+        )
+    })}
+</Select>
+<Label>KM</Label>
+<Input value={km} onChange={(e:any) => setKm(e.target.value)}/>
 <Label>Status</Label>
-<Select onChange={(e:any) => setStatus(e.target.value)}>
+<Select onChange={(e:any) => setStatus(e.target.value)} defaultValue={status}>
     <option value="Concluido">Concluído</option>
     <option value="Pendente">Pendente</option>
 </Select>

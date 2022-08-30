@@ -21,7 +21,6 @@ export function ContextProvider({ children }: IContextProvider) {
     const [actualToken, setActualToken] = useState<any>("")
     const [userSummary, setUserSummary] = useState(templateUserSummary)
     const [userData, setUserData] = useState()
-    console.log("contexttoken",companyToken)
 
     useEffect(() => {
         setCompanyToken(localStorage.getItem("CompanyToken"))
@@ -62,7 +61,6 @@ export function ContextProvider({ children }: IContextProvider) {
     async function handleDeleteCompany() { }
     async function getSummaryCompany() {
         const summary = await companiesServices.companySummary(companyToken)
-        console.log("context summary", summary)
         if (!summary.error) {
             setCompanySummary(summary)
         }
@@ -80,7 +78,6 @@ export function ContextProvider({ children }: IContextProvider) {
     }
     async function getCompanyEmployees() {
         const employees = await companiesServices.listEmployees(companyToken)
-        console.log("context employees", employees)
         if (!employees.error) {
             setCompanyEmployees(employees)
         }
@@ -96,7 +93,6 @@ export function ContextProvider({ children }: IContextProvider) {
     }
     async function handleInsertExpense({description, value, status}: any){
         const created = await companiesServices.insertExpense({description, value, status}, companyToken)
-        console.log(created)
     }
     async function handleChangePassword({password, newPassword}: any){
        try {
@@ -108,15 +104,19 @@ export function ContextProvider({ children }: IContextProvider) {
        }
         
     }
-    async function handleEditOrder({description, value, status}: any, orderId: string){
-        console.log({description, value,status, orderId})
+    async function handleEditOrder({description, value, status, driver, km}: any, orderId: string){
+        console.log({description, value,status, orderId, driver, km})
+        const edited = await companiesServices.editOrder({description, value, status ,driver, km}, orderId, companyToken)
 
+    }
+    async function handleEditExpense({description, value, status}: any, expenseId: string){
+        console.log(description, value, status, expenseId)
+        const edited = await companiesServices.editExpense({description, value, status}, expenseId, companyToken)
     }
     //END COMPANIES
     // START USERS
 async function handleSignUser({ email, password }: any){
 const logged = await usersServices.userAuth({email, password}).then(response => response.data)
-console.log(logged)
 if(logged){
     localStorage.setItem("UserToken", logged.token.tokenHash)
     setUserData(logged)
@@ -133,7 +133,7 @@ async function getSummaryUser(){
 }
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder, handleEditExpense }}>
             {children}
         </Context.Provider>
     )

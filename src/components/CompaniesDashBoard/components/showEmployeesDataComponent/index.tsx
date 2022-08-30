@@ -25,7 +25,7 @@ export default function ShowEmployeesDataComponent({companyEmployees}: IShowMovi
       {companyEmployees.employees.all_employees.map((e: any) => {
         return (
           <tr>
-           <td> <ShowEmployeesAccordion element={e}/></td>
+           <td> <ShowEmployeesAccordion element={e} key={e.id}/></td>
           </tr>
         ) 
       })}

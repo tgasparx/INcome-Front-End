@@ -8,7 +8,6 @@ import GrainIcon from '@mui/icons-material/Grain';
 
 function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
   event.preventDefault();
-  console.info('You clicked a breadcrumb.');
 }
 interface IBreadCrumbMenuProps{
   setSelectedPortal: any

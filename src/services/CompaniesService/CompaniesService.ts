@@ -46,9 +46,15 @@ async insertOrder({description, value, status,driver, km}: any, token: string){
     const created = await api.post(`companies/orders/create/${token}`, {description, value, status, driver, km})
     return true
 }
+async editOrder({description, value, status ,driver, km}: any, orderId:string, token: string){
+console.log("esta noi service")
+}
 async insertExpense({description, value, status}: any, token: string){
     const created = await api.post(`/companies/expenses/create/${token}`, {description, value ,status})
     return created
+}
+async editExpense({description, value, status}: any, expenseId: string, token: string){
+
 }
 async changePassword({password, newPassword}: any, token: string){
     const changed = await api.put(`/companies/changePassword/${token}`, {password, newPassword}).then(response => response.data)

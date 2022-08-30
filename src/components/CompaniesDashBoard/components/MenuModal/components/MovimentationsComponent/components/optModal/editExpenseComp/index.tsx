@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "../../../../../../../../../context";
 import StyledButton from "./components/button";
 import {
   Container,
@@ -28,8 +29,10 @@ export default function EditExpenseComp({
   const [description, setDescription] = useState(expense.description);
   const [value, setValue] = useState(expense.value);
   const [status, setStatus] = useState(expense.status);
+  const {handleEditExpense} = useContext(Context)
 
   async function handleSubmit() {
+    const edited = await handleEditExpense({description, value, status}, expense.expense_id)
     window.location.href = "/homeCompanies";
   }
 
