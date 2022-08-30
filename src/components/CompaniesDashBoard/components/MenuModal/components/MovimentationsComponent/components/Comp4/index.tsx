@@ -1,17 +1,17 @@
 import { useContext, useState } from "react"
 import { Context } from "../../../../../../../../context"
-import { Button, Container, Input, Label } from "./styles"
+import { Button, Container, Input, Label, Select } from "./styles"
 
-
+//edit expense
 export default function Comp4(){
   
 const {handleInsertExpense, companyData} = useContext(Context)
 const [description, setDescription] = useState("")
 const [value, setValue] = useState("")
-const [status, setStatus] = useState(companyData.cnpj)
+const [status, setStatus] = useState("")
 
 async function handleSubmit(){
-   const edited = await handleInsertExpense({description, value, status})
+   const inserted = await handleInsertExpense({description, value, status})
 
 }
     return (
@@ -22,8 +22,11 @@ async function handleSubmit(){
          <Label>Valor</Label>
          <Input onChange={(e: any) => setValue(e.target.value)} value={value}></Input> 
          <Label>Status</Label>
-         <Input onChange={(e: any) => setStatus(e.target.value)} value={status}></Input> 
-         <Button onClick={handleSubmit}>Confirmar alterações</Button>
+         <Select onChange={(e: any) => { setStatus(e.target.value)}}>
+    <option value="Concluido">Concluído</option>
+    <option value="Pendente">Pendente</option>
+    </Select>
+         <Button onClick={handleSubmit}>Salvar</Button>
         </Container>
         </>
     )

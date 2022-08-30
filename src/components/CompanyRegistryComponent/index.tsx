@@ -42,19 +42,14 @@ export default function CompanyRegistryComponent() {
       password: data.get("password"),
       cnpj: data.get("cnpj")
     }
-    console.log({
-      name: data.get('name'),
-      email: data.get('email'),
-      password: data.get('password'),
-      cnpj: data.get('cnpj'),
-    });
+   
     try {
       const created: any = await handleCreateCompany(creationData)
       if(created){
-        console.log("true")
+    
         navigate("/", { replace: true });
       }else{
-        console.log("false")
+      
       }
     } catch (error) {
       console.log("catch",error)

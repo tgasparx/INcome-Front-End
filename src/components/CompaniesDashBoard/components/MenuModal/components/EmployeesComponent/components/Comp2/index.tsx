@@ -16,9 +16,10 @@ const [cpf, setCpf] = useState("")
 
     async function handleSubmit(){
         const created = await handleCreateNewEmployee({name, email, password, cpf})
+        window.location.href = "/homeCompanies"
+        //navigate("/homeCompanies", {replace: true})
         if(created){
-           navigate("/homeCompanies", {replace: true})
-           console.log(created)
+
         }
     }
     return (

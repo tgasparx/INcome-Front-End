@@ -9,7 +9,6 @@ async createCompany({name, email, password, cnpj}: any){
 async companyAuth({email, password}: any){
     try {
         const logged = await api.post("/companies/auth", {email, password}).then(response => response.data)
-        console.log(logged)
         return logged
     } catch (error) {
         console.log(error)
@@ -50,5 +49,9 @@ async insertOrder({description, value, status,driver, km}: any, token: string){
 async insertExpense({description, value, status}: any, token: string){
     const created = await api.post(`/companies/expenses/create/${token}`, {description, value ,status})
     return created
+}
+async changePassword({password, newPassword}: any, token: string){
+    const changed = await api.put(`/companies/changePassword/${token}`, {password, newPassword}).then(response => response.data)
+    return changed
 }
 }

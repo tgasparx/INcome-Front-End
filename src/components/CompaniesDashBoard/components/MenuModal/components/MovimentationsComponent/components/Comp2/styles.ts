@@ -43,6 +43,7 @@ border-radius: 5px;
 `;
 export const Select = styled.select`
 width: 200px;
+height: 30px;
 
 `;
 export const Option = styled.option``;

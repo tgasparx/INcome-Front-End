@@ -9,7 +9,6 @@ import {useNavigate} from 'react-router-dom'
 export default function HomeCompanies() {
     const { checkToken, getSummaryCompany,getCompanyData, getCompanyEmployees, companySummary } = useContext(Context)
     const token = localStorage.getItem("CompanyToken")
-    console.log("hometoken", token)
     const navigate = useNavigate()
     
     async function checkValidTokenAndGetData() {

@@ -1,3 +1,5 @@
+import { useContext, useState } from "react"
+import { Context } from "../../../../../../../../../context"
 import StyledButton from "./components/button"
 import { Container, ContainerTopCloseFlag, Content, ContentTopCloseFlag, Down, DownLeft, DownRight, Input, Label, Select, Span, Up, UpLeft, UpRight } from "./styles"
 
@@ -6,6 +8,16 @@ interface IEditOrderCompProps{
     order: any
 }
 export default function EditOrderComp({setIsOptModalOpen, order}: IEditOrderCompProps){
+    const {handleEditOrder} = useContext(Context)
+const [description, setDescription] = useState(order.description)
+const [value, setValue] = useState(order.value)
+const [status, setStatus] = useState(order.status)
+
+
+async function handleSubmit(){
+const edited = await handleEditOrder({description, value ,status}, order.id)
+window.location.href = "/homeCompanies"
+}
 
     return <Container >
         <ContainerTopCloseFlag
@@ -36,11 +48,11 @@ export default function EditOrderComp({setIsOptModalOpen, order}: IEditOrderComp
      <Down>
      <DownLeft>
 <Label>Descrição</Label>
-<Input/>
+<Input value={description} onChange={(e:any) => setDescription(e.target.value)}/>
 <Label>Valor</Label>
-<Input/>
+<Input value ={value} onChange={(e:any) => setValue(e.target.value)}/>
 <Label>Status</Label>
-<Select >
+<Select onChange={(e:any) => setStatus(e.target.value)}>
     <option value="Concluido">Concluído</option>
     <option value="Pendente">Pendente</option>
 </Select>
@@ -50,7 +62,7 @@ export default function EditOrderComp({setIsOptModalOpen, order}: IEditOrderComp
      </DownLeft>
         <DownRight>
 
-           <StyledButton text="Confirmar" onClick={() => {}}/>
+           <StyledButton text="Confirmar" onClick={handleSubmit}/>
            
                    </DownRight>
      </Down>

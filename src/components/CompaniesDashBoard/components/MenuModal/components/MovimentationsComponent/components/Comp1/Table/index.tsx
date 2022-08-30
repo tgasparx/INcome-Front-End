@@ -1,52 +1,45 @@
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { NoActionTr, Td, Th, Tr } from './styles';
+import * as React from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { NoActionTr, Td, Th, Tr } from "./styles";
 
 function createData(
   name: string,
   calories: number,
   fat: number,
   carbs: number,
-  protein: number,
+  protein: number
 ) {
   return { name, calories, fat, carbs, protein };
 }
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-interface IDataShowTableProps{
-  companySummary: any
-  selectedOrderId: any
-  setSelectedOrderId: any
-  companyEmployees: any
+interface IDataShowTableProps {
+  companySummary: any;
+  selectedOrderId: any;
+  setSelectedOrderId: any;
+  companyEmployees: any;
 }
 
-
-export default function DataShowTable({companySummary, selectedOrderId, setSelectedOrderId, companyEmployees}: IDataShowTableProps) {
- 
-
-
-function handleChangeSeletedOrder(orderId: string){
-  setSelectedOrderId(orderId)
-}
+export default function DataShowTable({
+  companySummary,
+  selectedOrderId,
+  setSelectedOrderId,
+  companyEmployees,
+}: IDataShowTableProps) {
+  function handleChangeSeletedOrder(orderId: string) {
+    setSelectedOrderId(orderId);
+  }
 
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
         <TableHead>
           <NoActionTr>
-          <Th>Descrição</Th>
+            <Th>Descrição</Th>
             <Th align="right">Valor</Th>
             <Th align="right">Status</Th>
             <Th align="right">Motorista</Th>
@@ -55,31 +48,23 @@ function handleChangeSeletedOrder(orderId: string){
           </NoActionTr>
         </TableHead>
         <TableBody>
-
-
           {companySummary.orders_summary.all_orders.map((element: any) => (
             <Tr
-              key={element.expense_id}
+              key={element.order_id}
               element={element}
               selectedOrderId={selectedOrderId}
-              onClick={() => {handleChangeSeletedOrder(element.order_id)}}
+              onClick={() => {
+                handleChangeSeletedOrder(element.order_id);
+              }}
             >
-              <Td>
-                {element.description}
-              </Td>
+              <Td >{element.description}</Td>
               <Td >{element.value}</Td>
               <Td >{element.status}</Td>
-              <Td>{element.driver}</Td>
-             
+              <Td >{element.driver}</Td>
 
-            
-              <Td >{element.km}</Td>
+              <Td>{element.km} </Td>
               <Td >{element.created_at}</Td>
             </Tr>
-
-
-
-
           ))}
         </TableBody>
       </Table>

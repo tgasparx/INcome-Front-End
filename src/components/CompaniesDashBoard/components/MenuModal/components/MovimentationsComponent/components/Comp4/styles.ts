@@ -7,6 +7,8 @@ export const Container = styled.div`
 width: 100%;
 display: flex;
 flex-direction: column;
+padding-left: 10%;
+justify-content: center;
 padding: 10px auto;
 
 
@@ -39,4 +41,8 @@ border-radius: 5px;
 &:hover{
     background-color: darkblue;
 }
+`;
+export const Select = styled.select`
+width: 200px;
+height: 30px;
 `;

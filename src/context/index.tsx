@@ -37,7 +37,6 @@ export function ContextProvider({ children }: IContextProvider) {
     //START COMPANIES
     async function handleCreateCompany({ name, email, password, cnpj }: any) {
         const created = await companiesServices.createCompany({ name, email, password, cnpj })
-            console.log(created)
         if(created){
             return true
         }else{
@@ -47,7 +46,6 @@ export function ContextProvider({ children }: IContextProvider) {
     async function handleSignInCompany({ email, password }: any): Promise<any> {
         const logged = await companiesServices.companyAuth({ email, password })
         if (logged.token.tokenHash) {
-            console.log(logged.token.tokenHash)
             window.localStorage.setItem("CompanyToken", logged.token.tokenHash)
             setCompanyToken(localStorage.getItem("CompanyToken"))
             setActualToken(logged.token.tokenHash)
@@ -57,8 +55,8 @@ export function ContextProvider({ children }: IContextProvider) {
         }
 
     }
-    async function handleEditCompany({name, email, password}: any) {
-        const edited = await companiesServices.companyEdit({name, email, password}, companyToken)
+    async function handleEditCompany({name, email, cnpj}: any) {
+        const edited = await companiesServices.companyEdit({name, email, cnpj}, companyToken)
         return edited
      }
     async function handleDeleteCompany() { }
@@ -75,7 +73,6 @@ export function ContextProvider({ children }: IContextProvider) {
     }
     async function getCompanyData() {
         const companyData = await companiesServices.getCompanyData(companyToken)
-        console.log("ccompanyData", companyData)
         if (!companyData.error) {
             setCompanyData(companyData)
         }
@@ -91,7 +88,6 @@ export function ContextProvider({ children }: IContextProvider) {
     }
     async function handleCreateNewEmployee({name, email, password, cpf}: any){
         const created = await companiesServices.insertNewEmployee({name, email, password, cpf}, companyToken)
-        console.log(created)
         return true
     }
     async function handleInsertOrder({description, value, status, driver, km}: any){
@@ -102,10 +98,23 @@ export function ContextProvider({ children }: IContextProvider) {
         const created = await companiesServices.insertExpense({description, value, status}, companyToken)
         console.log(created)
     }
+    async function handleChangePassword({password, newPassword}: any){
+       try {
+        const changed = await companiesServices.changePassword({password, newPassword}, companyToken)
+        return true
+       } catch (error) {
+        console.log(error)
+        return false
+       }
+        
+    }
+    async function handleEditOrder({description, value, status}: any, orderId: string){
+        console.log({description, value,status, orderId})
+
+    }
     //END COMPANIES
     // START USERS
 async function handleSignUser({ email, password }: any){
-console.log("sign", email, password)
 const logged = await usersServices.userAuth({email, password}).then(response => response.data)
 console.log(logged)
 if(logged){
@@ -118,14 +127,13 @@ if(logged){
 }
 async function getSummaryUser(){
     const summary = await usersServices.userSummary(userToken)
-    console.log("responsesummary", summary)
     setUserSummary(summary)
 
     return true
 }
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder }}>
             {children}
         </Context.Provider>
     )

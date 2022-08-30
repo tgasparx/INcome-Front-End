@@ -10,11 +10,9 @@ export default function EmployeesComponent() {
   const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
   const { companyEmployees } = useContext(Context);
   function handleDeleteEmployee() {
-    console.log(selectedEmployeeId);
     window.alert("Fazer modal de confirmação");
   }
   function handleEditEmployee() {
-    console.log(selectedEmployeeId);
     window.alert("Fazer modal de Edição");
   }
   function controlSelectedComp() {

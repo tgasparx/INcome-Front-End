@@ -56,7 +56,7 @@ function handleChangeSeletedOrder(expenseId: string){
 
           {companySummary.expenses_summary.all_expenses.map((element: any) => (
             <Tr
-              key={element.order_id}
+              key={element.expense_id}
               element={element}
               selectedExpenseId={selectedExpenseId}
               onClick={() => {handleChangeSeletedOrder(element.expense_id)}}

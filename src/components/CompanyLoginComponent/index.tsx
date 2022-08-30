@@ -40,17 +40,14 @@ export default function CompanyLoginPage() {
       email: data.get("email"),
       password: data.get("password")
     }
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  
     try {
       const logged: any = await handleSignInCompany(loginData)
       if(logged){
-        console.log("true")
+    
         navigate("../homeCompanies", { replace: true });
       }else{
-        console.log("false")
+       
       }
     } catch (error) {
       console.log("catch",error)
