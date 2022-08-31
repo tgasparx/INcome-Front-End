@@ -105,7 +105,6 @@ export function ContextProvider({ children }: IContextProvider) {
         
     }
     async function handleEditOrder({description, value, status, driver, km}: any, orderId: string){
-        console.log({description, value,status, orderId, driver, km})
         const edited = await companiesServices.editOrder({description, value, status ,driver, km}, orderId, companyToken)
 
     }
