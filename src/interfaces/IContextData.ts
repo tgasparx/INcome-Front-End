@@ -12,6 +12,7 @@ export default interface IContextData{
     getCompanyEmployees: any
     companyEmployees: any
     handleCreateNewEmployee: any
+    handleEditEmployee: any
     handleInsertOrder: ({description, value, status}: any) => any
     handleInsertExpense: ({description, value, status}: any) => any
     handleSignUser: any
@@ -21,4 +22,7 @@ export default interface IContextData{
     handleChangePassword: ({password, newPassword}: any) => Promise<any>
     handleEditOrder: ({description, value, status, driver}: any, orderId: string) => Promise<any>
     handleEditExpense: ({description, value, status}: any, expenseId: string) => Promise<any>
+    handleDeleteOrder: (orderId: string) => Promise<any>
+    handleDeleteExpense: (expenseId: string) => Promise<any>
+    getUserData: () => Promise<any>
 }

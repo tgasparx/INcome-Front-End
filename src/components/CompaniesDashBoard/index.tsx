@@ -7,15 +7,10 @@ import ShowEmployeesDataComponent from "./components/showEmployeesDataComponent"
 import ShowMovimentationsDataComponent from "./components/showMovimentationsDataComponent";
 import { Button, Container, DownContent, Left, Right, UpContent, UpLeft } from "./styles";
 
-interface ICompaniesDashBoardProps{
-    companySummary: any
-}
-
 export default function CompaniesDashboard(){
 const {companyData, companyEmployees, companySummary} = useContext(Context)
 const [selectedDataComponent, setSelectedDataComponent] = useState<any>("")
 const [selectedMovimentation, setSelectedMovimentation] = useState<any>("")
-const [modalIsOpen, setIsOpen] = useState(false);
 function handleChangeSelectedDataComponent(){
     switch (selectedDataComponent) {
         case "company":

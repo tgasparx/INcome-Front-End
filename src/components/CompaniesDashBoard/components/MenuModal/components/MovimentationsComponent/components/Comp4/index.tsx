@@ -12,6 +12,7 @@ const [status, setStatus] = useState("")
 
 async function handleSubmit(){
    const inserted = await handleInsertExpense({description, value, status})
+   window.location.href = "/homeCompanies"
 
 }
     return (

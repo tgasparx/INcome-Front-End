@@ -16,7 +16,7 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: center;
-min-height: 370px;
+min-height: 600px;
 /* background-color: yellow; */
 
 `;

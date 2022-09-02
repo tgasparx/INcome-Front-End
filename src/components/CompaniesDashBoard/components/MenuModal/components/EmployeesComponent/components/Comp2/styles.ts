@@ -8,7 +8,7 @@ width: 100%;
 display: flex;
 flex-direction: column;
 padding: 10px auto;
-
+height: 550px;
 
 
 `;

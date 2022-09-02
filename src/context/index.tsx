@@ -7,6 +7,7 @@ import UsersService from "../services/UsersService/UsersService";
 import { templateCompanyData } from "../templates/companyData";
 import { templateCompanyEmployees } from "../templates/companyEmployees";
 import { templateCompanySummary } from "../templates/companySummary";
+import { templateUserData } from "../templates/userData";
 import { templateUserSummary } from "../templates/UserSummary";
 
 export const Context = createContext({} as IContextData);
@@ -18,13 +19,11 @@ export function ContextProvider({ children }: IContextProvider) {
     const [companyEmployees, setCompanyEmployees] = useState(templateCompanyEmployees)
     const [companyToken, setCompanyToken] = useState<any>(localStorage.getItem("CompanyToken"))
     const [userToken, setUserToken] = useState(localStorage.getItem("UserToken"))
-    const [actualToken, setActualToken] = useState<any>("")
     const [userSummary, setUserSummary] = useState(templateUserSummary)
-    const [userData, setUserData] = useState()
+    const [userData, setUserData] = useState(templateUserData)
 
     useEffect(() => {
         setCompanyToken(localStorage.getItem("CompanyToken"))
-        setActualToken(localStorage.getItem("CompanyToken"))
     }, [])
     async function checkToken(token: string) {
         if (token !== "") {
@@ -47,7 +46,6 @@ export function ContextProvider({ children }: IContextProvider) {
         if (logged.token.tokenHash) {
             window.localStorage.setItem("CompanyToken", logged.token.tokenHash)
             setCompanyToken(localStorage.getItem("CompanyToken"))
-            setActualToken(logged.token.tokenHash)
             return true
         } else {
             return false
@@ -87,12 +85,35 @@ export function ContextProvider({ children }: IContextProvider) {
         const created = await companiesServices.insertNewEmployee({name, email, password, cpf}, companyToken)
         return true
     }
-    async function handleInsertOrder({description, value, status, driver, km}: any){
-        const created = await companiesServices.insertOrder({description, value ,status, driver, km}, companyToken)
+    async function handleEditEmployee({name, email, password, cpf}: any, employeeId: string){
+        const edited = await companiesServices.editEmployee({name, email, password, cpf}, employeeId,companyToken)
+        console.log(name, email, password, cpf)
+        return edited
 
+    }
+    async function handleInsertOrder({description, value, status, driver, client, km}: any){
+        const created = await companiesServices.insertOrder({description, value ,status, driver, client, km}, companyToken)
+    }
+    async function handleEditOrder({description, value, status, driver,client, km}: any, orderId: string){
+        const edited = await companiesServices.editOrder({description, value, status ,driver, client, km}, orderId, companyToken)
+
+    }
+    async function handleDeleteOrder(orderId: string){
+        const deleted = await companiesServices.deleteOrder(orderId, companyToken)
+        return deleted
     }
     async function handleInsertExpense({description, value, status}: any){
         const created = await companiesServices.insertExpense({description, value, status}, companyToken)
+        return created
+    }
+    async function handleEditExpense({description, value, status}: any, expenseId: string){
+        console.log(description, value, status, expenseId)
+        const edited = await companiesServices.editExpense({description, value, status}, expenseId, companyToken)
+        return edited
+    }
+    async function handleDeleteExpense(expenseId: string){
+        const deleted = await companiesServices.deleteExpense(expenseId, companyToken)
+        return deleted
     }
     async function handleChangePassword({password, newPassword}: any){
        try {
@@ -104,21 +125,16 @@ export function ContextProvider({ children }: IContextProvider) {
        }
         
     }
-    async function handleEditOrder({description, value, status, driver, km}: any, orderId: string){
-        const edited = await companiesServices.editOrder({description, value, status ,driver, km}, orderId, companyToken)
 
-    }
-    async function handleEditExpense({description, value, status}: any, expenseId: string){
-        console.log(description, value, status, expenseId)
-        const edited = await companiesServices.editExpense({description, value, status}, expenseId, companyToken)
-    }
+
     //END COMPANIES
     // START USERS
 async function handleSignUser({ email, password }: any){
-const logged = await usersServices.userAuth({email, password}).then(response => response.data)
+const logged = await usersServices.userAuth({email, password})
 if(logged){
     localStorage.setItem("UserToken", logged.token.tokenHash)
     setUserData(logged)
+    setUserToken(logged.token.tokenHash)
     return true
 }else{
     return false
@@ -130,9 +146,16 @@ async function getSummaryUser(){
 
     return true
 }
+
+async function getUserData(){
+   if(userToken){
+    const userData = await usersServices.userData(userToken)
+    setUserData(userData)
+   }
+}
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder, handleEditExpense }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleEditEmployee, handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder, handleEditExpense, handleDeleteExpense, handleDeleteOrder, getUserData }}>
             {children}
         </Context.Provider>
     )

@@ -5,11 +5,10 @@ export const Container = styled.div`
 margin: -3% 5% 0 0;
 z-index: 100;
 width: 80%;
-height: 400px;
+height: 700px;
 position: absolute;
 //background-color: lightgray;
 border-radius: 5px;
-justify-self: end;
 
 
 `;
@@ -48,7 +47,7 @@ display: flex;
 flex-direction: column;
 box-shadow: 2px 0.2px 3px;
 width: 100%;
-height: 480px;
+height: 500px;
 background-color: lightgray;
 padding: 5%;
 `;

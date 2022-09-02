@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { Context } from "../../../../../../../../../context"
 import StyledButton from "./components/button"
 import { Container, ContainerTopCloseFlag, Content, ContentTopCloseFlag, Down, DownLeft, DownRight, Input, Label, Select, Span, Up, UpLeft, UpRight } from "./styles"
 
@@ -6,6 +8,11 @@ interface IEditOrderCompProps{
     expense: any
 }
 export default function DeleteExpenseComp({setIsOptModalOpen, expense}: IEditOrderCompProps){
+    const {handleDeleteExpense} = useContext(Context)
+    async function handleSubmit(){
+        const deleted = await handleDeleteExpense(expense.expense_id)
+        window.location.href = "/homeCompanies"
+    }
 
     return <Container >
         <ContainerTopCloseFlag
@@ -42,7 +49,7 @@ export default function DeleteExpenseComp({setIsOptModalOpen, expense}: IEditOrd
 
      </DownLeft>
         <DownRight> 
-        <StyledButton text="Sim, desejo excluir" onClick={() => {}}/>
+        <StyledButton text="Sim, desejo excluir" onClick={handleSubmit}/>
         <StyledButton text="Não, desejo cancelar" onClick={() => setIsOptModalOpen(false)}/>
            
                    </DownRight>

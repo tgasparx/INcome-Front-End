@@ -4,6 +4,7 @@ import DeleteExpenseComp from "./deleteExpenseComp";
 import DeleteOrderComp from "./deleteOrderComp";
 import EditExpenseComp from "./editExpenseComp";
 import EditOrderComp from "./editOrderComp";
+import { Container } from "./styles";
 
 interface IOptModalProps{
     setIsOptModalOpen: any
@@ -22,15 +23,34 @@ function returnSelectedExpense (){
     return selectedOrder[0]
 }
 
+
     switch (selectedOptComp) {
         case "edit-order":
-            return <EditOrderComp order={returnSelectedOrder()} setIsOptModalOpen={setIsOptModalOpen}/> 
+            return (
+               <Container>
+                <EditOrderComp order={returnSelectedOrder()} setIsOptModalOpen={setIsOptModalOpen}/> 
+               </Container>
+                    
+               
+            )
         case "delete-order":
-            return <DeleteOrderComp order={returnSelectedOrder()} setIsOptModalOpen={setIsOptModalOpen}/>
+            return(
+                <Container>
+                     <DeleteOrderComp order={returnSelectedOrder()} setIsOptModalOpen={setIsOptModalOpen}/>
+                </Container>
+            )
         case "edit-expense":
-            return <EditExpenseComp expense={returnSelectedExpense()} setIsOptModalOpen={setIsOptModalOpen}/>
+            return (
+                <Container>
+                    <EditExpenseComp expense={returnSelectedExpense()} setIsOptModalOpen={setIsOptModalOpen}/>
+                </Container>
+            )
         case "delete-expense":
-            return <DeleteExpenseComp expense={returnSelectedExpense()} setIsOptModalOpen={setIsOptModalOpen}/>
+            return (
+                <Container>
+                    <DeleteExpenseComp expense={returnSelectedExpense()} setIsOptModalOpen={setIsOptModalOpen}/>
+                </Container>
+            )
 
     
         default:

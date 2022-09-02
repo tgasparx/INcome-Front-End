@@ -11,17 +11,17 @@ export default function ShowInfoCard({userSummary, userData}: IShowInfoCardProps
 
 const data = [
     {
-        value: `${userSummary.total_km}`,
+        value: `${userSummary.total_km || 0}`,
         tag: "Qulômetros",
         description: "Total de quilõmetros percorridos"    
     },
     {
-        value: `${userSummary.total_pedidos}`,
+        value: `${userSummary.total_pedidos || 0}`,
         tag: "Pedidos",
         description: "Total de pedidos"    
     },
     {
-        value: `${userSummary.total_pedidos_finalizados}`,
+        value: `${userSummary.total_pedidos_finalizados || 0}`,
         tag: "Pedidos",
         description: "Total de pedidos concluídos"    
     }

@@ -39,26 +39,42 @@ async insertNewEmployee({name, email, password, cpf}: any, token: string){
     const created = await api.post(`/users/create/${token}`, {name, email, password, cpf})
     return created
 }
-async editEmployee(token: string, {newData}: any ){}
+async editEmployee({name, email, password, cpf}: any,employeeId: string, token: string ){
+    const edited = await api.patch(`/users/edit/${token}/${employeeId}`, {name,email, password, cpf})
+    return edited
+
+}
 async deleteEmployee(token: string, employeeCPF: string){}
 
-async insertOrder({description, value, status,driver, km}: any, token: string){
-    const created = await api.post(`companies/orders/create/${token}`, {description, value, status, driver, km})
-    return true
-}
-async editOrder({description, value, status ,driver, km}: any, orderId:string, token: string){
-    const edited = await api.patch(`/companies/orders/edit/${token}`, {description, value, status, driver, km, orderId})
-    console.log(edited)
-}
-async insertExpense({description, value, status}: any, token: string){
-    const created = await api.post(`/companies/expenses/create/${token}`, {description, value ,status})
+async insertOrder({description, value, status,driver, client, km}: any, token: string){
+    const created = await api.post(`/orders/create/${token}`, {description, value, status, driver, client, km})
     return created
 }
+async editOrder({description, value, status ,driver,client, km}: any, orderId:string, token: string){
+    const edited = await api.patch(`/orders/edit/${token}`, {description, value, status, driver,client, km, orderId})
+    console.log(edited)
+    return edited
+}
+async deleteOrder(orderId: string, token: string){
+    const deleted = await api.delete(`/orders/delete/${orderId}/${token}`)
+    return deleted
+}
+async insertExpense({description, value, status}: any, token: string){
+    const created = await api.post(`/expenses/create/${token}`, {description, value ,status})
+    return created
+}
+////////////////////////////////////////
 async editExpense({description, value, status}: any, expenseId: string, token: string){
-
+    const edited = await api.patch(`/expenses/edit/${expenseId}/${token}`, {description, value, status})
+    return edited
+}
+async deleteExpense(expenseId: string, token: string){
+    const deleted = await api.delete(`/expenses/delete/${expenseId}/${token}`)
+    return deleted
 }
 async changePassword({password, newPassword}: any, token: string){
     const changed = await api.put(`/companies/changePassword/${token}`, {password, newPassword}).then(response => response.data)
     return changed
 }
+
 }

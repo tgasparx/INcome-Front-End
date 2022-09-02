@@ -5,14 +5,7 @@ export const templateCompanySummary = {
       page: 1,
       perPage: 0,
       total_records: 0,
-      all_orders: [{
-        "order_id": "",
-				"owner_company": "",
-				"status": "Pendente",
-				"value": 0,
-				"created_at": "",
-				"updated_at": ""
-      }]
+      all_orders: []
     },
     expenses_summary: {
       page: 1,

@@ -8,11 +8,12 @@ import { Container, Content, ContentInfoLeft, ContentInfoRight} from "./styles";
 
 
 export default function UsersDashBoard(){
- const {userSummary, getSummaryUser, userData} = useContext(Context)
+ const {userSummary, getSummaryUser, userData, getUserData} = useContext(Context)
 
  useEffect(() => {
-  console.log(userSummary)
+  getUserData()
   getSummaryUser()
+  console.log(userSummary)
  },[])
 
     return (

@@ -18,7 +18,7 @@ export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
     const customStyles = {
         content: {
             width: "100%",
-            height: "80%",
+            height: "95%",
             // display: "flex",
             // flexDirection: "row",
           top: '50%',

@@ -14,7 +14,7 @@ export default function UserCard({userData}: IUserCardProps){
                 <ContainerName>{userData.name}</ContainerName>
             </Up>
             <Down>
-              Profissão: {userData.function}
+              Profissão: {userData.job}
             </Down>
         </>
     )

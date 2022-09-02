@@ -34,6 +34,7 @@ export default function DataShowTable({companyEmployees, selectedEmployeeId, set
 
 function handleSelectEmployee(id: any){
   setSelectedEmployeeId(id)
+  console.log(id)
 }
 
 

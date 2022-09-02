@@ -31,11 +31,12 @@ export default function EditOrderComp({
   const [value, setValue] = useState(order.value);
   const [status, setStatus] = useState(order.status);
   const [driver, setDriver] = useState(order.driver);
+  const [client,setClient] = useState(order.client)
   const [km, setKm] = useState(order.km);
 
   async function handleSubmit() {
     const edited = await handleEditOrder(
-      { description, value, status, driver, km },
+      { description, value, status, driver, client, km },
       order.order_id
     );
     console.log({ description, value, status, driver, km }, order.order_id)
@@ -104,6 +105,8 @@ export default function EditOrderComp({
             </Select>
             <Label>KM</Label>
             <Input value={km} onChange={(e: any) => setKm(e.target.value)} />
+            <Label>Cliente</Label>
+            <Input value={client} onChange={(e: any) => setClient(e.target.value)} />
             <Label>Status</Label>
             <Select
               onChange={(e: any) => setStatus(e.target.value)}

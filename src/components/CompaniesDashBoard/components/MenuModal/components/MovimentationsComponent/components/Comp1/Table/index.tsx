@@ -36,7 +36,12 @@ export default function DataShowTable({
 
   function returnEmployeeName(employeeId: string){
     const name = companyEmployees.employees.all_employees.filter((e:any) => e.id === employeeId)
-    return <>{name[0].name}</>
+    console.log(name)
+    if(name[0]){
+      return <>{name[0].name}</>
+    }else{
+      return <>Ñ registrado</>
+    }
   }
   return (
     <TableContainer component={Paper}>

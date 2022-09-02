@@ -1,14 +1,15 @@
 
 
 export const templateUserData = {
-	"id": "",
-	"name": "",
-	"email": "",
-	"cpf": "",
-	"function": "",
-	"created_at": "",
-	"token": {
-		"type": "",
-		"tokenHash": ""
+	id: "",
+	name: "",
+	email: "",
+	cpf: "",
+	user_job: "Motorista",
+	created_at: "",
+	token: {
+		type: "",
+		tokenHash: ""
 	}
+	
 }

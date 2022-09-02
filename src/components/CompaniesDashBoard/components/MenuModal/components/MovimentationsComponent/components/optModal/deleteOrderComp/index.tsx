@@ -1,3 +1,5 @@
+import { useContext, useState } from "react"
+import { Context } from "../../../../../../../../../context"
 import StyledButton from "./components/button"
 import { Container, ContainerTopCloseFlag, Content, ContentTopCloseFlag, Down, DownLeft, DownRight, Input, Label, Select, Span, Up, UpLeft, UpRight } from "./styles"
 
@@ -6,7 +8,13 @@ interface IEditOrderCompProps{
     order: any
 }
 export default function DeleteOrderComp({setIsOptModalOpen, order}: IEditOrderCompProps){
+    const [referedOrderId, setReferedOrderId] = useState(order.order_id)
+    const {handleDeleteOrder} = useContext(Context)
 
+    async function handleSubmit(){
+        const deleted = await handleDeleteOrder(referedOrderId)
+        window.location.href = "/homeCompanies"
+    }
     return <Container >
         <ContainerTopCloseFlag
         >
@@ -42,7 +50,7 @@ export default function DeleteOrderComp({setIsOptModalOpen, order}: IEditOrderCo
 
      </DownLeft>
         <DownRight>
-        <StyledButton text="Sim, desejo excluir" onClick={() => {}}/>
+        <StyledButton text="Sim, desejo excluir" onClick={handleSubmit}/>
         <StyledButton text="Não, desejo cancelar" onClick={() => setIsOptModalOpen(false)}/>
            
                    </DownRight>
