@@ -10,16 +10,18 @@ interface OptModalProps{
     selectedEmployeeId: any
 }
 export default function OptModal({isOptModalOpen, setIsOptModalOpen, companyEmployees, selectedEmployeeId}: OptModalProps){
+    const seletedEmployeeData = companyEmployees.employees.all_employees.filter((e: any) => e.id === selectedEmployeeId)
     const {handleEditEmployee} = useContext(Context)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [cpf, setCpf] = useState("")
 
-    const seletedEmployeeData = companyEmployees.employees.all_employees.filter((e: any) => e.id === selectedEmployeeId)
+
 
     async function handleSubmit(){
-        handleEditEmployee({name, email, password, cpf}, selectedEmployeeId)
+        const edited = await handleEditEmployee({name, email, password, cpf}, selectedEmployeeId)
+        // console.log(selectedEmployeeId)
         window.location.href = "/homeCompanies"
     }
 

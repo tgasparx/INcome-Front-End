@@ -87,9 +87,13 @@ export function ContextProvider({ children }: IContextProvider) {
     }
     async function handleEditEmployee({name, email, password, cpf}: any, employeeId: string){
         const edited = await companiesServices.editEmployee({name, email, password, cpf}, employeeId,companyToken)
-        console.log(name, email, password, cpf)
+        // console.log(name, email, password, cpf)
         return edited
 
+    }
+    async function handleDeleteEmployee(employeeId: string){
+        const deleted = await companiesServices.deleteEmployee(employeeId, companyToken)
+        return deleted
     }
     async function handleInsertOrder({description, value, status, driver, client, km}: any){
         const created = await companiesServices.insertOrder({description, value ,status, driver, client, km}, companyToken)
@@ -155,7 +159,7 @@ async function getUserData(){
 }
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleEditEmployee, handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder, handleEditExpense, handleDeleteExpense, handleDeleteOrder, getUserData }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateNewEmployee, handleEditEmployee, handleDeleteEmployee,handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder, handleEditExpense, handleDeleteExpense, handleDeleteOrder, getUserData }}>
             {children}
         </Context.Provider>
     )
