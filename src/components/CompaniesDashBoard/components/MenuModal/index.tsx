@@ -6,7 +6,7 @@ import BreadCrumbMenu from './components/BreadCrumbMenu';
 import CompanyComponent from './components/CompanyComponent';
 import EmployeesComponent from './components/EmployeesComponent';
 import MovimentationsComponent from './components/MovimentationsComponent';
-import { Container, Content } from './styles';
+import { Button, Container, Content } from './styles';
 
 interface IMenuModalProps{
     setIsOpen: any
@@ -65,7 +65,10 @@ export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
             contentLabel=""
           >
             <Container>
+           
             <BreadCrumbMenu setSelectedPortal={setSelectedPortal}/>
+            <Button onClick={closeModal}>X</Button>
+        
             </Container>
             <Content>
            {controlSelectedPortal()}

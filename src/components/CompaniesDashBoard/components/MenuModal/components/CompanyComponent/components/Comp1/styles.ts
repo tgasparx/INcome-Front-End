@@ -6,20 +6,26 @@ flex-direction: row;
 display: flex;
 width: 100%;
 height: 100%;
+justify-content: center;
+@media (max-width: 600px) {
+    /* justify-content: space-between; */
+}
 /* background-color: blue; */
+margin-top: 10px;
 `;
 export const RightContent = styled.div`
+margin-right: 10px;
 display: flex;
 flex-direction: column;
-width: 70%;
 height: 60%;
 color: blue;
+margin-left: 50px;
 
 `;
 export const LeftContent = styled.div`
+margin-left: 10px;
 display: flex;
 flex-direction: column;
-width: 30%;
 height: 60%;
 
 `;

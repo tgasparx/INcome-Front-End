@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Context } from "../../../../../../../../context"
-import { Button, Container, Input, Label } from "./styles"
+import { Button, Container, Content, Input, Label } from "./styles"
 
 
 export function Comp2(){
@@ -17,13 +17,16 @@ async function handleSubmit(){
     return (
         <>
         <Container>
-         <Label>Nome</Label><br></br>
+      <Content>
+      <Label>Nome</Label><br></br>
          <Input onChange={(e: any) => setName(e.target.value)} value={name}></Input> <br></br>
          <Label>Email</Label><br></br>
          <Input onChange={(e: any) => setEmail(e.target.value)} value={email}></Input> <br></br>
          <Label>Cnpj</Label><br></br>
          <Input onChange={(e: any) => setCnpj(e.target.value)} value={cnpj}></Input> <br></br>
          <Button onClick={handleSubmit}>Confirmar alterações</Button>
+
+      </Content>
         </Container>
         </>
     )

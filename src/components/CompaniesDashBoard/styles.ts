@@ -5,7 +5,7 @@ export const Container = styled.div`
 display: flex;
 flex-direction: column;
 width: 100%;
-min-height: 700px;
+min-height: 600px;
 /* background-color: lightblue; */
 
 
@@ -33,46 +33,13 @@ flex-direction: row;
 export const DownContent = styled.section`
 display: flex;
 flex-direction: row;
+align-items: center;
 width: 100%;
-height: 50%;
+height: 200px;
 /* background-color: gray; */
 background-color: lightgray;
 @media (max-width: 700px) {
     flex-direction: column;
     width: 100%;
-}
-`;
-export const Left = styled.div`
-display: flex;
-flex-direction: column;
-width: 50%;
-height: 100%;
-/* background-color: magenta; */
-@media (max-width: 700px) {
-
-    width: 100%;
-}
-`;
-export const Right = styled.div`
-display: flex;
-flex-direction: column;
-width: 50%;
-height: 100%;
-
-@media (max-width: 700px) {
-
-width: 100%;
-}
-`;
-interface IButtonProps{
-    id: any
-}
-export const Button = styled.button<IButtonProps>`
-height: 50px;
-border: none;
-background-color: ${(props) => props.id === "company" ? "gray" : "blue"};
-color: white;
-&:hover{
-    background-color: ${(props) => props.id === "company" ? "darkgray" : "darkblue"};
 }
 `;

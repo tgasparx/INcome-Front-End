@@ -43,7 +43,7 @@ function handleSelectEmployee(id: any){
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+      <Table sx={{ minWidth: 400 }} size="small" aria-label="a dense table">
         <TableHead >
           <NoActionTr >
             <Th>Nome</Th>

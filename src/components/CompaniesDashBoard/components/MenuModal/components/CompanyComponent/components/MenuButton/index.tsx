@@ -57,7 +57,7 @@ interface IMenuButtonsProps{
 export default function MenuButtons({text, onClick}: IMenuButtonsProps) {
   return (
     <Stack spacing={4} direction="row" style={{width: "100%", display: "flex", justifyContent: "center"}}>
-      <BootstrapButton variant="contained" disableRipple style={{width: "90%", marginTop: "10px"}} onClick={onClick}>
+      <BootstrapButton variant="contained" disableRipple style={{width: "90%"}} onClick={onClick}>
         {text}
       </BootstrapButton>
     </Stack>

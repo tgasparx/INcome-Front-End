@@ -6,13 +6,20 @@ interface IInputProps{
 export const Container = styled.div`
 width: 100%;
 display: flex;
-flex-direction: column;
+flex-direction: row;
 padding: 10px auto;
-
+align-items: center;
+justify-content: center;
+margin-top: 20px;
+`;
+export const Content = styled.div`
+width: 80%;
+height: 100%;
+display: flex;
+flex-direction: column;
 
 
 `;
-
 
 export const Label = styled.label`
 margin-top: 10px;
@@ -23,7 +30,7 @@ margin-top: 10px;
 export const Input = styled.input<IInputProps>`
 height: 35px;
 color: gray;
-width: 80%;
+width: 100%;
 border: none;
 box-shadow: 3px 0.2px 2px;
 

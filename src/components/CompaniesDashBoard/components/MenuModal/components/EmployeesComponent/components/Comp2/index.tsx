@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../../../../../../../../context";
-import { Button, Container, Input, Label } from "./styles";
+import { Button, Container, Content, Input, Label } from "./styles";
 import { useNavigate } from "react-router";
 
 
@@ -24,7 +24,8 @@ const [cpf, setCpf] = useState("")
     }
     return (
         <Container>
-            <Label>Nome</Label>
+<Content>
+<Label>Nome</Label>
         <Input value={name} onChange={(e) => setName(e.target.value)}/>
         <Label>Email</Label>
         <Input value={email} onChange={(e) => setEmail(e.target.value)}/>
@@ -37,6 +38,7 @@ const [cpf, setCpf] = useState("")
         <Label>CPF</Label>
         <Input value={cpf} onChange={(e) => setCpf(e.target.value)}/>
         <Button onClick={handleSubmit}>Adicionar</Button>
+</Content>
         </Container>
     )
 }

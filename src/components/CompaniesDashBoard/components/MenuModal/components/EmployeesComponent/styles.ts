@@ -2,24 +2,27 @@ import styled from 'styled-components'
 
 
 export const Container = styled.div`
-display: grid;
-grid-template-columns: 30% 70%;
-grid-template-rows: 100%;
+display: flex;
+flex-direction: column;
 width: 100%;
 min-height: 600px;
 background-color: lightgray;
 border-radius: 8px;
 box-shadow: 0.2px 1px 4px;
-@media (max-width: 600px) {
-    grid-template-columns: 1fr;
-grid-template-rows: 50%;
-}
+
 `;
 export const NavContent = styled.nav`
 display: flex;
 flex-direction: column;
 //background-color: yellow;
+margin-bottom: 20px;
+@media (min-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 `;
 export const OptContent = styled.div`
+width: 100%;
+height: 400px;
 //background-color: gray;
 `;

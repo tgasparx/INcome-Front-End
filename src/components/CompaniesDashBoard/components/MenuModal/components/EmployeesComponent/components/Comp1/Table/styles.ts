@@ -12,6 +12,7 @@ background-color: blue;
 export const NoActionTr = styled.tr`
 background-color: lightblue;
 line-height: 30px;
+font-size: 12px;
 `;
 export const Tr = styled.tr<ITrProps>`
 background-color: ${(props) => props.selectedEmployeeId === props.element.id ? "darkblue" : "white"};
@@ -26,6 +27,7 @@ export const Td = styled.td`
 text-align: left;
 padding-left: 10px;
 line-height: 30px;
+font-size: 12px;
 
 `;
 export const Th = styled.th`

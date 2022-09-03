@@ -20,7 +20,6 @@ export default function BreadCrumbMenu({setSelectedPortal}: IBreadCrumbMenuProps
           underline="hover"
           sx={{ display: 'flex', alignItems: 'center', fontSize: "12px" }}
           color="inherit"
-          // href="/"
         onClick={() => setSelectedPortal("portal1")}
         >
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -30,7 +29,6 @@ export default function BreadCrumbMenu({setSelectedPortal}: IBreadCrumbMenuProps
           underline="hover"
           sx={{ display: 'flex', alignItems: 'center', fontSize: "12px" }}
           color="inherit"
-          // href="/material-ui/getting-started/installation/"
           onClick={() => setSelectedPortal("portal2")}
         >
           <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -40,17 +38,12 @@ export default function BreadCrumbMenu({setSelectedPortal}: IBreadCrumbMenuProps
           underline="hover"
           sx={{ display: 'flex', alignItems: 'center', fontSize: "12px" }}
           color="inherit"
-          // href="/material-ui/getting-started/installation/"
           onClick={() => setSelectedPortal("portal3")}
         >
           <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Movimentações
         </Link>
-        {/* <Typography
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="text.primary"
-        >
-        </Typography> */}
+
       </Breadcrumbs>
     </div>
   );

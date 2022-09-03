@@ -2,12 +2,11 @@ import styled from 'styled-components'
 
 
 export const Container = styled.div`
-display: grid;
-grid-template-columns: 30% 70%;
-grid-template-rows: 100%;
+flex-direction: column;
+display: flex;
 width: 100%;
-min-height: 370px;
-background-color: lightgray;
+height: 600px;
+background-color: white;
 border-radius: 8px;
 box-shadow: 0.2px 1px 4px;
 @media (max-width: 600px) {
@@ -16,10 +15,24 @@ grid-template-rows: 50%;
 }
 `;
 export const NavContent = styled.nav`
+margin-top: 10px;
 display: flex;
-flex-direction: column;
+flex-direction: row;
+width: 100%;
+min-height: 5%;
 //background-color: yellow;
+@media (max-width: 600px) {
+  flex-direction: column;
+    button{
+        margin-top: 8px;
+    }
+}
 `;
 export const OptContent = styled.div`
+font-size: 14px;
+margin-top: 2%;
+background-color: white;
+height: 89%;
+border-radius: 0 0 5px 5px;
 //background-color: gray;
 `;

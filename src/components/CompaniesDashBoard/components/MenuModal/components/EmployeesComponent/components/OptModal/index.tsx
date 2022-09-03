@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../../../../../../../../context";
-import { Container, Label, Input, Button } from "./styles";
+import { Container, Label, Input, Button, Header, CloseButton, Form, ShowInfo, Left, Right } from "./styles";
 
 
 interface OptModalProps{
@@ -29,8 +29,21 @@ export default function OptModal({isOptModalOpen, setIsOptModalOpen, companyEmpl
    if(isOptModalOpen){
     return (
         <Container>
-         <button onClick={() => setIsOptModalOpen(false)}>Fechar</button>
-         <Label>Name</Label>
+            <Header> Editar funcionário<CloseButton onClick={() => setIsOptModalOpen(false)}>Fechar</CloseButton></Header>
+        <ShowInfo>
+            <Left>
+                <span>Nome:</span>
+                <span>Email:</span>
+                <span>Cpf:</span>
+            </Left>
+            <Right>
+           <span> {seletedEmployeeData[0].name}</span>
+         <span>{seletedEmployeeData[0].email}</span>
+       <span>  {seletedEmployeeData[0].cpf}</span>
+            </Right>
+        </ShowInfo>
+        <Form>
+        <Label>Name</Label>
          <Input value={name} onChange={(e: any) => setName(e.target.value)}/>
          <Label>Email</Label>
          <Input value={email} onChange={(e:any) => setEmail(e.target.value)}/>
@@ -39,6 +52,7 @@ export default function OptModal({isOptModalOpen, setIsOptModalOpen, companyEmpl
          <Label>CPF</Label>
          <Input value={cpf} onChange={(e:any) => setCpf(e.target.value)}/>
          <Button onClick={handleSubmit}>Confirmar</Button>
+        </Form>
         </Container>
      )
    }else{
