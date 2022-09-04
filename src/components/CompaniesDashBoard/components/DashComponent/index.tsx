@@ -51,7 +51,7 @@ export default function DashComponent({ companySummary, companyEmployees }: IDas
 
             </DashSection>
             <DashSection>
-                <Up color1="darkgreen" color2="green"><LabelUp>{companySummary.orders_summary.all_orders.length}</LabelUp></Up>
+                <Up color1="green" color2="darkgreen"><LabelUp>{companySummary.orders_summary.all_orders.length}</LabelUp></Up>
               
                 <Down color="darkgreen">
                     <LabelDown>

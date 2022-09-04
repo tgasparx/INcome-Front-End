@@ -23,6 +23,6 @@ margin-bottom: 20px;
 `;
 export const OptContent = styled.div`
 width: 100%;
-height: 400px;
+min-height: 400px;
 //background-color: gray;
 `;

@@ -31,7 +31,7 @@ grid-template-columns: 1fr 1fr;
 `;
 export const OptContent = styled.div`
 width: 100%;
-height: 400px;
+min-height: 400px;
 //background-color: gray;
 `;
 export const OrdersNav = styled.div`

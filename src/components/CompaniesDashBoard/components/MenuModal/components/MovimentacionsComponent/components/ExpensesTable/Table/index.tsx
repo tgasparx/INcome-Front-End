@@ -27,13 +27,13 @@ const rows = [
 ];
 interface IDataShowTableProps{
   companySummary: any
-    selectedOrderId: any
-    setSelectedOrderId: any
+  selectedExpenseId: any
+    setSelectedExpenseId: any
 }
-export default function DataShowTable({companySummary, selectedOrderId, setSelectedOrderId}: IDataShowTableProps) {
+export default function DataShowTable({companySummary, selectedExpenseId, setSelectedExpenseId}: IDataShowTableProps) {
 
-function handleSelectOrder(id: any){
-  setSelectedOrderId(id)
+function handleSelectExpense(id: any){
+  setSelectedExpenseId(id)
   console.log(id)
 }
 
@@ -48,22 +48,18 @@ function handleSelectOrder(id: any){
           <NoActionTr >
             <Th>Descrição</Th>
             <Th align="right">Valor</Th>
-            <Th align="right">Motorista</Th>
             <Th align="right">Status</Th>
-            <Th align="right">Cliente</Th>
-            <Th align="right">Km</Th>
-            
         
           </NoActionTr>
         </TableHead>
         <TableBody>
-          {companySummary.orders_summary.all_orders.map((e: any) => (
-        
+          {companySummary.expenses_summary.all_expenses.map((e: any) => (
+      
                 <Tr
               key={e.id}
-              onClick={() => handleSelectOrder(e.order_id)}
+              onClick={() => handleSelectExpense(e.expense_id)}
               element={e}
-              selectedOrderId={selectedOrderId}
+              selectedEmployeeId={selectedExpenseId}
             >
             
                 <Td>
@@ -73,16 +69,7 @@ function handleSelectOrder(id: any){
                {e.value}
                 </Td>
                 <Td>
-                {e.driver}
-                </Td>
-                <Td>
                 {e.status}
-                </Td>
-                <Td>
-                {e.client}
-                </Td>
-                <Td>
-                {e.km}
                 </Td>
            
               

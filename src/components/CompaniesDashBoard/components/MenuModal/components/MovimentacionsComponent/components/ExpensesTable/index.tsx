@@ -2,21 +2,21 @@ import { Container } from "./styles";
 import DataShowTable from "./Table";
 
 interface IComp1Props {
-  setSelectedOrderId: any;
-  selectedOrderId: any;
+  setSelectedExpenseId: any;
+  selectedExpenseId: any;
   companySummary: any;
 }
-export default function OrdersTable({
-  selectedOrderId,
-  setSelectedOrderId,
+export default function ExpensesTable({
+  selectedExpenseId,
+  setSelectedExpenseId,
   companySummary,
 }: IComp1Props) {
   return (
     <Container>
       <DataShowTable
         companySummary={companySummary}
-        selectedOrderId={selectedOrderId}
-        setSelectedOrderId={setSelectedOrderId}
+        selectedExpenseId={selectedExpenseId}
+        setSelectedExpenseId={setSelectedExpenseId}
       />
     </Container>
   );

@@ -1,3 +1,4 @@
+import IEditOrderData from "./IEditOrderData"
 
 export default interface IContextData{
     handleSignInCompany: ({email, password}: any) => Promise<any>
@@ -21,7 +22,7 @@ export default interface IContextData{
     userSummary: any
     userData: any
     handleChangePassword: ({password, newPassword}: any) => Promise<any>
-    handleEditOrder: ({description, value, status, driver}: any, orderId: string) => Promise<any>
+    handleEditOrder: ({description, value, status, driver}: IEditOrderData, orderId: string) => Promise<any>
     handleEditExpense: ({description, value, status}: any, expenseId: string) => Promise<any>
     handleDeleteOrder: (orderId: string) => Promise<any>
     handleDeleteExpense: (expenseId: string) => Promise<any>

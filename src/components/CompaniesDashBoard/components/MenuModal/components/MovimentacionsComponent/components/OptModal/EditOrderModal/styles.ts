@@ -13,6 +13,8 @@ border-radius: 5px;
 display: flex;
 flex-direction: column;
 align-items: center;
+min-height: 660px;
+
 `;
 export const Header = styled.div`
 color: white;
@@ -33,7 +35,7 @@ width: 60%;
 display: flex;
 flex-direction: row;
 justify-content: center;
-background-color: lightblue;
+background-color: lightgreen;
 height: 100px;
 align-items: center;
 `;
@@ -64,11 +66,20 @@ margin-top: 20px;
 width: 60%;
 display: flex;
 flex-direction: column;
+/* padding-bottom: 200px; */
 `;
 export const Label = styled.label`
 margin-top: 10px;
 `;
-export const Input = styled.input``;
+interface IInputProps{
+    type: string
+}
+export const Input = styled.input`
+border: none;
+border-radius: 5px;
+box-shadow: 2px 0.2px 1px orange;
+height: 30px;
+`;
 export const Button = styled.button`
 width: 200px;
 height: 30px;

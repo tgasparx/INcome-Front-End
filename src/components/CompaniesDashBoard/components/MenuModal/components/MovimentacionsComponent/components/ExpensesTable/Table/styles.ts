@@ -3,22 +3,22 @@ import styled from 'styled-components'
 
 interface ITrProps{
     element: any
-    selectedOrderId: any
+    selectedEmployeeId: any
 }
 export const ActionTableButton = styled.a`
 background-color: blue;
 
 `;
 export const NoActionTr = styled.tr`
-background-color: lawngreen;
+background-color: lightcoral;
 line-height: 30px;
 font-size: 12px;
 `;
 export const Tr = styled.tr<ITrProps>`
-background-color: ${(props) => props.selectedOrderId === props.element.order_id ? "darkgreen" : "white"};
-color: ${(props) => props.selectedOrderId === props.element.order_id ? "white" : "black"};
+background-color: ${(props) => props.selectedEmployeeId === props.element.expense_id ? "darkred" : "white"};
+color: ${(props) => props.selectedEmployeeId === props.element.expense_id ? "white" : "black"};
 &:hover{
-background-color: green;
+background-color: red;
 color: white;
 cursor: pointer;
 }

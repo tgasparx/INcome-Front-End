@@ -33,9 +33,11 @@ width: 60%;
 display: flex;
 flex-direction: row;
 justify-content: center;
-background-color: lightblue;
-height: 100px;
+background-color: lightgreen;
+height: 150px;
 align-items: center;
+margin-bottom: 20px;
+
 `;
 export const Left = styled.div`
 width: 150px;

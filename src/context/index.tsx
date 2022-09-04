@@ -10,6 +10,7 @@ import IContextProvider from "../interfaces/IContextProvider";
 import ICreateCompanyData from "../interfaces/ICreateCompanyData";
 import ICreateUserData from "../interfaces/ICreateUserData";
 import IEditCompanyData from "../interfaces/IEditCompanyData";
+import IEditOrderData from "../interfaces/IEditOrderData";
 import IEditUserData from "../interfaces/IEditUserData";
 import IUserData from "../interfaces/IUserData";
 import IUserSummary from "../interfaces/IUserSummary";
@@ -107,7 +108,7 @@ export function ContextProvider({ children }: IContextProvider) {
         const created = await companiesServices.insertOrder({description, value ,status, driver, client, km}, companyToken)
         return true
     }
-    async function handleEditOrder({description, value, status, driver,client, km}: any, orderId: string): Promise<boolean>{
+    async function handleEditOrder({description, value, status, driver,client, km}: IEditOrderData, orderId: string): Promise<boolean>{
         const edited = await companiesServices.editOrder({description, value, status ,driver, client, km}, orderId, companyToken)
         return true
     }

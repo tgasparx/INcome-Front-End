@@ -3,71 +3,92 @@ import { Context } from "../../../../../../context";
 import OrdersTable from "./components/OrdersTable";
 import CreateOrderComp from "./components/CreateOrderComp";
 import MenuButtons from "./components/MenuButton";
-import DeleteEmployeeModal from "./components/OptModal/DeleteEmployeeModal";
-import EditEmployeeModal from "./components/OptModal/EditEmployeeModal";
+import DeleteOrderModal from "./components/OptModal/DeleteOrderModal";
+import EditOrderModal from "./components/OptModal/EditOrderModal";
 import { Container, NavContent, OptContent, OrdersNav, ExpensesNav, ContainerNav } from "./styles";
+import ExpensesTable from "./components/ExpensesTable";
+import CreateExpenseComp from "./components/CreateExpenseComp";
+// import EditOrderComp from "./components/EditOrderComp";
 
 export default function MovimentationsCOmponent() {
   const [selectedComp, setSelectedComp] = useState("");
-  const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
-  const { companyEmployees } = useContext(Context);
-  const [isOptModalOpen, setIsOptModalOpen] = useState<boolean>(false)
-  const [isDeleteEmployeeModalOpen, setIsDeleteEmployeeModalOpen] = useState<boolean>(false)
+  const [selectedOrderId, setSelectedOrderId] = useState("");
+  const { companySummary, companyEmployees } = useContext(Context);
+  const [selectedExpenseId, setSelectedExpenseId] = useState("")
+  const [isEditOrderModalOpen, setIsEditOrderModalOpen] = useState<boolean>(false)
+  const [isDeleteOrderModalOpen, setIsDeleteOrderModalOpen] = useState<boolean>(false)
 
   
   function controlSelectedComp() {
     switch (selectedComp) {
-      case "comp1":
+      case "OrdersTable":
         return (
           <OrdersTable
-            companyEmployees={companyEmployees}
-            selectedEmployeeId={selectedEmployeeId}
-            setSelectedEmployeeId={setSelectedEmployeeId}
+          companySummary={companySummary}
+          selectedOrderId={selectedOrderId}
+          setSelectedOrderId={setSelectedOrderId}
           />
         );
-      case "comp2":
-        return <CreateOrderComp />;
+      case "CreateOrder":
+        return <CreateOrderComp/>
+      case "ExpensesTable":
+          return (
+            <ExpensesTable
+            companySummary={companySummary}
+            selectedExpenseId={selectedExpenseId}
+            setSelectedExpenseId={setSelectedExpenseId}
+            />
+          )
+      case "CreateExpense":
+        return <CreateExpenseComp/>
 
       default:
         return (
           <OrdersTable
-            companyEmployees={companyEmployees}
-            selectedEmployeeId={selectedEmployeeId}
-            setSelectedEmployeeId={setSelectedEmployeeId}
+          companySummary={companySummary}
+          selectedOrderId={selectedOrderId}
+            setSelectedOrderId={setSelectedOrderId}
           />
         );
     }
   }
   return (
     <Container>
-      <EditEmployeeModal isOptModalOpen={isOptModalOpen} setIsOptModalOpen={setIsOptModalOpen} companyEmployees={companyEmployees} selectedEmployeeId={selectedEmployeeId}/>
-      <DeleteEmployeeModal isDeleteEmployeeModalOpen={isDeleteEmployeeModalOpen} setIsDeleteEmployeeModalOpen={setIsDeleteEmployeeModalOpen} companyEmployees={companyEmployees} selectedEmployeeId={selectedEmployeeId}/>
+      <EditOrderModal isEditOrderModalOpen={isEditOrderModalOpen} setIsEditOrderModalOpen={setIsEditOrderModalOpen} companySummary={companySummary} selectedOrderId={selectedOrderId} companyEmployees={companyEmployees}/>
+      <DeleteOrderModal isDeleteOrderModalOpen={isDeleteOrderModalOpen} setIsDeleteOrderModalOpen={setIsDeleteOrderModalOpen} companySummary={companySummary} selectedOrderId={selectedOrderId}/>
       <ContainerNav>
       <OrdersNav>
       <NavContent>
         <MenuButtons
           onClick={() => {
-            setSelectedComp("comp1")
+            setSelectedComp("OrdersTable")
           }}
           text="Pedidos"
         />
         <MenuButtons
           onClick={() => {
-            setSelectedComp("comp2")
+            setSelectedComp("CreateOrder")
           }}
           text="Adicionar pedido"
         />
         <MenuButtons
           onClick={() => {
-            // setSelectedComp("comp1");
-            // handleEditEmployee();
+            if(!selectedOrderId){
+              window.alert("Selecione um pedido")
+              setSelectedComp("OrdersTable")
+            }else{
+              setIsEditOrderModalOpen(true)
+            }
           }}
           text="Editar pedido"
         />
         <MenuButtons
           onClick={() => {
-            // setSelectedComp("comp1");
-            // handleDeleteEmployee();
+            if(!selectedOrderId){
+              window.alert("Selecione um pedido")
+            }else{
+              setIsDeleteOrderModalOpen(true)
+            }
           }}
           text="Excluir pedido"
         />
@@ -77,27 +98,33 @@ export default function MovimentationsCOmponent() {
       <NavContent>
         <MenuButtons
           onClick={() => {
-            // setSelectedComp("comp1")
+            setSelectedComp("ExpensesTable")
           }}
           text="Despesas"
         />
         <MenuButtons
           onClick={() => {
-            // setSelectedComp("comp2")
+            setSelectedComp("CreateExpense")
           }}
           text="Adicionar despesa"
         />
         <MenuButtons
           onClick={() => {
-            // setSelectedComp("comp1");
-            // handleEditEmployee();
+          if(!selectedExpenseId){
+            window.alert("Selecione uma despesa")
+          }else{
+            window.alert("ABERTURA DO MODAL  DE EDIÇÃO DE DESPESA")
+          }
           }}
           text="Editar despesa"
         />
         <MenuButtons
           onClick={() => {
-            // setSelectedComp("comp1");
-            // handleDeleteEmployee();
+         if(!selectedExpenseId){
+          window.alert("Selecione uma despesa")
+         }else{
+          window.alert("ABERTURA DO MODAL DE EXCLUSÃO DE DESPESA")
+         }
           }}
           text="Excluir despesa"
         />
