@@ -13,4 +13,6 @@ return summary
         const userData = await api.get(`/users/data/${token}`).then(response => response.data)
         return userData
     }
+  
+
 }

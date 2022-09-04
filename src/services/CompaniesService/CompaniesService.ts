@@ -30,26 +30,26 @@ async getCompanyData(companyToken: string){
     const companyData = await api.get(`/companies/data/${companyToken}`).then(response => response.data)
     return companyData
 }
+async createUser({name, email, password, cpf}: any, token: string){
+    const created = await api.post(`/users/create/${token}`, {name, email, password, cpf})
+    return created
+}
+async deleteUser(employeeId: string, token: string){
+    const deleted = await api.delete(`/users/delete/${token}/${employeeId}`)
+    return deleted
+} 
 
 async listEmployees(companyToken: string){
     const employees = await api.get(`/companies/employees/${companyToken}`).then(response => response.data)
     return employees
 }
-async insertNewEmployee({name, email, password, cpf}: any, token: string){
-    const created = await api.post(`/users/create/${token}`, {name, email, password, cpf})
-    return created
-}
+
 async editEmployee({name, email, password, cpf}: any, employeeId: string, token: string ){
     const edited = await api.patch(`/users/edit/${token}/${employeeId}`, {name,email, password, cpf})
     console.log(employeeId, name, email, password, cpf, token)
     console.log(edited)
     return false
-
 }
-async deleteEmployee(employeeId: string, token: string){
-    const deleted = await api.delete(`/users/delete/${token}/${employeeId}`)
-    return deleted
-}   
 
 async insertOrder({description, value, status,driver, client, km}: any, token: string){
     const created = await api.post(`/orders/create/${token}`, {description, value, status, driver, client, km})

@@ -1,49 +1,36 @@
 import { useContext, useState } from "react";
 import { Context } from "../../../../../../context";
-import Comp1 from "./components/Comp1";
-import Comp2 from "./components/Comp2";
+import OrdersTable from "./components/OrdersTable";
+import CreateOrderComp from "./components/CreateOrderComp";
 import MenuButtons from "./components/MenuButton";
 import DeleteEmployeeModal from "./components/OptModal/DeleteEmployeeModal";
 import EditEmployeeModal from "./components/OptModal/EditEmployeeModal";
-import { Container, NavContent, OptContent } from "./styles";
+import { Container, NavContent, OptContent, OrdersNav, ExpensesNav, ContainerNav } from "./styles";
 
-export default function EmployeesComponent() {
+export default function MovimentationsCOmponent() {
   const [selectedComp, setSelectedComp] = useState("");
   const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
   const { companyEmployees } = useContext(Context);
   const [isOptModalOpen, setIsOptModalOpen] = useState<boolean>(false)
   const [isDeleteEmployeeModalOpen, setIsDeleteEmployeeModalOpen] = useState<boolean>(false)
 
-  function handleDeleteEmployee() {
-   if(!selectedEmployeeId){
-    window.alert("Selecione um funcionário")
-   }else{
-    setIsDeleteEmployeeModalOpen(true)
-   }
-  }
-  function handleEditEmployee() {
-   if(!selectedEmployeeId){
-    window.alert("Selecione um Funcionário")
-   }else{
-    setIsOptModalOpen(true)
-   }
-  }
+  
   function controlSelectedComp() {
     switch (selectedComp) {
       case "comp1":
         return (
-          <Comp1
+          <OrdersTable
             companyEmployees={companyEmployees}
             selectedEmployeeId={selectedEmployeeId}
             setSelectedEmployeeId={setSelectedEmployeeId}
           />
         );
       case "comp2":
-        return <Comp2 />;
+        return <CreateOrderComp />;
 
       default:
         return (
-          <Comp1
+          <OrdersTable
             companyEmployees={companyEmployees}
             selectedEmployeeId={selectedEmployeeId}
             setSelectedEmployeeId={setSelectedEmployeeId}
@@ -55,33 +42,68 @@ export default function EmployeesComponent() {
     <Container>
       <EditEmployeeModal isOptModalOpen={isOptModalOpen} setIsOptModalOpen={setIsOptModalOpen} companyEmployees={companyEmployees} selectedEmployeeId={selectedEmployeeId}/>
       <DeleteEmployeeModal isDeleteEmployeeModalOpen={isDeleteEmployeeModalOpen} setIsDeleteEmployeeModalOpen={setIsDeleteEmployeeModalOpen} companyEmployees={companyEmployees} selectedEmployeeId={selectedEmployeeId}/>
-      
-      
-      
+      <ContainerNav>
+      <OrdersNav>
       <NavContent>
         <MenuButtons
-          onClick={() => setSelectedComp("comp1")}
-          text="Funcionários"
-        />
-        <MenuButtons
-          onClick={() => setSelectedComp("comp2")}
-          text="Adicionar Funcionário"
+          onClick={() => {
+            setSelectedComp("comp1")
+          }}
+          text="Pedidos"
         />
         <MenuButtons
           onClick={() => {
-            setSelectedComp("comp1");
-            handleEditEmployee();
+            setSelectedComp("comp2")
           }}
-          text="Editar Funcionário"
+          text="Adicionar pedido"
         />
         <MenuButtons
           onClick={() => {
-            setSelectedComp("comp1");
-            handleDeleteEmployee();
+            // setSelectedComp("comp1");
+            // handleEditEmployee();
           }}
-          text="Remover Funcionário"
+          text="Editar pedido"
+        />
+        <MenuButtons
+          onClick={() => {
+            // setSelectedComp("comp1");
+            // handleDeleteEmployee();
+          }}
+          text="Excluir pedido"
         />
       </NavContent>
+      </OrdersNav>
+      <ExpensesNav>
+      <NavContent>
+        <MenuButtons
+          onClick={() => {
+            // setSelectedComp("comp1")
+          }}
+          text="Despesas"
+        />
+        <MenuButtons
+          onClick={() => {
+            // setSelectedComp("comp2")
+          }}
+          text="Adicionar despesa"
+        />
+        <MenuButtons
+          onClick={() => {
+            // setSelectedComp("comp1");
+            // handleEditEmployee();
+          }}
+          text="Editar despesa"
+        />
+        <MenuButtons
+          onClick={() => {
+            // setSelectedComp("comp1");
+            // handleDeleteEmployee();
+          }}
+          text="Excluir despesa"
+        />
+      </NavContent>
+      </ExpensesNav>
+      </ContainerNav>
       <OptContent>{controlSelectedComp()}</OptContent>
     </Container>
   );

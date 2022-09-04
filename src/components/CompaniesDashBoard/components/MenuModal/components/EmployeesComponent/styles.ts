@@ -6,7 +6,7 @@ display: flex;
 flex-direction: column;
 width: 100%;
 min-height: 600px;
-background-color: lightgray;
+background-color: white;
 border-radius: 8px;
 box-shadow: 0.2px 1px 4px;
 

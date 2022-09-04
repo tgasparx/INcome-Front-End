@@ -4,7 +4,7 @@ import { Button, Container, Content, Input, Label } from "./styles";
 import { useNavigate } from "react-router";
 
 
-export default function Comp2(){
+export default function CreateOrderComp(){
     const navigate = useNavigate()
 const{handleCreateUser} = useContext(Context)
 const [name, setName] = useState("")

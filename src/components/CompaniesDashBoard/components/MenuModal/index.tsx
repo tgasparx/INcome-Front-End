@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import BreadCrumbMenu from './components/BreadCrumbMenu';
 import CompanyComponent from './components/CompanyComponent';
 import EmployeesComponent from './components/EmployeesComponent';
-import MovimentationsComponent from './components/MovimentationsComponent';
+import MovimentationsCOmponent from './components/MovimentacionsComponent';
 import { Button, Container, Content } from './styles';
 
 interface IMenuModalProps{
@@ -50,7 +50,7 @@ export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
             case "portal2":
                 return  <EmployeesComponent/>
             case "portal3":
-                return <MovimentationsComponent/>
+                return <MovimentationsCOmponent/>
             default:
                 return <CompanyComponent/>
         }
