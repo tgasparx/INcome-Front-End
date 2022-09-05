@@ -11,7 +11,7 @@ import { Container, NavContent, OptContent } from "./styles";
 export default function EmployeesComponent() {
   const [selectedComp, setSelectedComp] = useState("");
   const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
-  const { companyEmployees, controlOutBox } = useContext(Context);
+  const { companyEmployees, controlOutBox, closeOutBox } = useContext(Context);
   const [isOptModalOpen, setIsOptModalOpen] = useState<boolean>(false)
   const [isDeleteEmployeeModalOpen, setIsDeleteEmployeeModalOpen] = useState<boolean>(false)
 
@@ -65,8 +65,12 @@ export default function EmployeesComponent() {
           text="Funcionários"
         />
         <MenuButtons
-          onClick={() => setSelectedComp("comp2")}
+          onClick={() => {
+            closeOutBox()
+            setSelectedComp("comp2")
+          }}
           text="Adicionar Funcionário"
+          
         />
         <MenuButtons
           onClick={() => {
@@ -83,7 +87,7 @@ export default function EmployeesComponent() {
           text="Remover Funcionário"
         />
       </NavContent>
-    
+      <OutBox/>
       <OptContent>{controlSelectedComp()}</OptContent>
     </Container>
   );

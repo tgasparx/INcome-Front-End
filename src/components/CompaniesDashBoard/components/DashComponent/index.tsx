@@ -62,7 +62,7 @@ export default function DashComponent({ companySummary, companyEmployees }: IDas
 
             </DashSection>
             <DashSection>
-                <Up color1="lightgreen" color2="green"><LabelUp>{returnConcluedOrders("qtd")}</LabelUp></Up>
+                <Up color1="lightgreen" color2="darkgreen"><LabelUp>{returnConcluedOrders("qtd")}</LabelUp></Up>
    
                 <Down color="darkgreen">
                     <LabelDown>

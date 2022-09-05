@@ -10,12 +10,13 @@ import ExpensesTable from "./components/ExpensesTable";
 import CreateExpenseComp from "./components/CreateExpenseComp";
 import EditExpenseModal from "./components/OptModal/EditExpenseModal";
 import DeleteExpenseModal from "./components/OptModal/DeleteExpenseModal";
+import { OutBox } from "../OutBox";
 // import EditOrderComp from "./components/EditOrderComp";
 
 export default function MovimentationsCOmponent() {
   const [selectedComp, setSelectedComp] = useState("");
   const [selectedOrderId, setSelectedOrderId] = useState("");
-  const { companySummary, companyEmployees, controlOutBox } = useContext(Context);
+  const { companySummary, companyEmployees, controlOutBox, closeOutBox } = useContext(Context);
   const [selectedExpenseId, setSelectedExpenseId] = useState("")
   const [isEditOrderModalOpen, setIsEditOrderModalOpen] = useState<boolean>(false)
   const [isDeleteOrderModalOpen, setIsDeleteOrderModalOpen] = useState<boolean>(false)
@@ -74,6 +75,7 @@ export default function MovimentationsCOmponent() {
         <MenuButtons
           onClick={() => {
             setSelectedComp("CreateOrder")
+            closeOutBox()
           }}
           text="Adicionar pedido"
         />
@@ -112,6 +114,7 @@ export default function MovimentationsCOmponent() {
         <MenuButtons
           onClick={() => {
             setSelectedComp("CreateExpense")
+            closeOutBox()
           }}
           text="Adicionar despesa"
         />
@@ -139,7 +142,9 @@ export default function MovimentationsCOmponent() {
         />
       </NavContent>
       </ExpensesNav>
+     
       </ContainerNav>
+      <OutBox/>
       <OptContent>{controlSelectedComp()}</OptContent>
     </Container>
   );

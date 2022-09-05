@@ -11,13 +11,17 @@ interface OptModalProps{
 }
 export default function DeleteOrderModal({isDeleteOrderModalOpen, setIsDeleteOrderModalOpen, companySummary, selectedOrderId}: OptModalProps){
     const selectedOrderData = companySummary.orders_summary.all_orders.filter((e: any) => e.order_id === selectedOrderId)
-    const {handleDeleteOrder} = useContext(Context)
+    const {handleDeleteOrder, controlOutBox} = useContext(Context)
 
 
 
     async function handleSubmit(){
+        controlOutBox("green", "Pedido excluído com sucesso")
         const deleted = await handleDeleteOrder(selectedOrderId)
-        window.location.href = "/homeCompanies"
+        setTimeout(() => {
+            window.location.href = "/homeCompanies"
+        }, 1000);
+
     }
 
 

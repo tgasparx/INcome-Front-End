@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { Context } from "../../../../../../../../context"
+import { OutBox } from "../../../OutBox"
 import { Button, Container, Content, Input, Label } from "./styles"
 
 
@@ -36,7 +37,7 @@ async function handleSubmit(){
          <Label>Cnpj</Label><br></br>
          <Input onChange={(e: any) => setCnpj(e.target.value)} value={cnpj} inputColor={inputColor}></Input> <br></br>
          <Button onClick={handleSubmit}>Confirmar alterações</Button>
-
+        <OutBox/>
       </Content>
         </Container>
         </>

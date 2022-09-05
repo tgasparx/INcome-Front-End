@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../../../../../../../../../context";
+import { OutBox } from "../../../../OutBox";
 import { Container, Label, Input, Button, Header, CloseButton, Form, ShowInfo, Left, Right } from "./styles";
 
 
@@ -11,13 +12,16 @@ interface OptModalProps{
 }
 export default function DeleteExpenseModal({isDeleteExpenseModalOpen, setIsDeleteExpenseModalOpen, companySummary, selectedExpenseId}: OptModalProps){
     const selectedOrderData = companySummary.expenses_summary.all_expenses.filter((e: any) => e.expense_id === selectedExpenseId)
-    const {handleDeleteExpense} = useContext(Context)
-
+    const {handleDeleteExpense, controlOutBox} = useContext(Context)
 
 
     async function handleSubmit(){
+
         const deleted = await handleDeleteExpense(selectedExpenseId)
-        window.location.href = "/homeCompanies"
+        controlOutBox("green", "Despesa excluida com sucesso")
+        setTimeout(() => {
+            window.location.href = "/homeCompanies"
+        }, 1000);
     }
 
 
@@ -41,7 +45,7 @@ export default function DeleteExpenseModal({isDeleteExpenseModalOpen, setIsDelet
             `
          <Button onClick={handleSubmit}>Sim, tenho certeza</Button>
          <Button onClick={() => setIsDeleteExpenseModalOpen(false)}>Não, quero cancelar</Button>
-      
+        <OutBox/>
         </Container>
      )
    }else{

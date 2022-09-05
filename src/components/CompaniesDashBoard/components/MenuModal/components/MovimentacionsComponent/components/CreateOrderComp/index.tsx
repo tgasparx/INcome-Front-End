@@ -18,11 +18,17 @@ const [km, setKm] = useState("")
 const [inputColor, setInputColor] = useState("gray")
 
     async function handleSubmit(){
-        // const created = await handleInsertOrder({description, value, status, driver, client, km})
-        // window.location.href = "/homeCompanies"
-        //navigate("/homeCompanies", {replace: true})
-        controlOutBox("orange", "Preencha as informações")
-        setInputColor("orange")
+        if(description && value && status && driver && client && km){
+            const created = await handleInsertOrder({description, value, status, driver, client, km})
+            controlOutBox("green", "Pedido incluído com sucesso")
+        }else{
+        
+            controlOutBox("orange", "Preencha as informações corretamente")
+            setInputColor("orange")
+        }
+
+
+     
 
     }
     return (

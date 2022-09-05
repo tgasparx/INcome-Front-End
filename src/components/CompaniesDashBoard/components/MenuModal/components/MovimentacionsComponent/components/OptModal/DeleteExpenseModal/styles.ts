@@ -12,6 +12,7 @@ box-shadow: 1px 0.5px 2px;
 border-radius: 5px;
 display: flex;
 flex-direction: column;
+min-height: 600px;
 align-items: center;
 `;
 export const Header = styled.div`

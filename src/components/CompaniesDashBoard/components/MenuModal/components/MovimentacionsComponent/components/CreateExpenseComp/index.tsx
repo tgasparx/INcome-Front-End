@@ -19,7 +19,7 @@ const [inputColor, setInputColor] = useState("gray")
             controlOutBox("green", "Despesa criada com sucesso")
             setInputColor("green")
         }else{
-            controlOutBox("orange", "Preencha as informações")
+            controlOutBox("orange", "Preencha as informações corretamente")
             setInputColor("orange")
         }
    

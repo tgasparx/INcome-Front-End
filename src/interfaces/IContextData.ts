@@ -30,4 +30,6 @@ export default interface IContextData{
     outBoxText: any
     outBoxColor: any
     controlOutBox: any
+    isOutBoxActive: any
+    closeOutBox: any
 }

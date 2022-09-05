@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import { Context } from '../../../../../../../../context';
+import { OutBox } from '../../../OutBox';
 import { Label, Container, Button, Input, Content } from './styles'
 export function Comp3() {
     const { handleChangePassword, controlOutBox } = useContext(Context);
@@ -35,7 +36,9 @@ export function Comp3() {
                     <Input value={newPassword} onChange={(e: any) => setNewPassword(e.target.value)} inputColor={inputColor}/>
                     <Label>Repetir nova senha</Label>
                     <Input value={confirmNewPassword} onChange={(e: any) => setConfirmNewPassword(e.target.value)} inputColor={inputColor}/>
+                    
                     <Button onClick={handleSubmit}>Confirmar</Button>
+                    <OutBox/>
                 </Content>
             </Container>
         </>

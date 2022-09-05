@@ -84,7 +84,7 @@ export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
           </ContainerButtons>
         
             </Container>
-            <OutBox/>
+           
             <Content>
            {controlSelectedPortal()}
                

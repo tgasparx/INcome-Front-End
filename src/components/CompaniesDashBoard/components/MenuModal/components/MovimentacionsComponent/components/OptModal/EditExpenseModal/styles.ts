@@ -13,7 +13,8 @@ border-radius: 5px;
 display: flex;
 flex-direction: column;
 align-items: center;
-min-height: 500px;
+min-height: 600px;
+
 
 `;
 export const Header = styled.div`

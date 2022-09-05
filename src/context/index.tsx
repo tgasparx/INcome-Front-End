@@ -14,7 +14,6 @@ import IEditOrderData from "../interfaces/IEditOrderData";
 import IEditUserData from "../interfaces/IEditUserData";
 import IUserData from "../interfaces/IUserData";
 import IUserSummary from "../interfaces/IUserSummary";
-import OutBoxController from "../OutBoxContoller";
 import CompaniesService from "../services/CompaniesService/CompaniesService";
 import UsersService from "../services/UsersService/UsersService";
 import { templateCompanyData } from "../templates/companyData";
@@ -36,6 +35,7 @@ export function ContextProvider({ children }: IContextProvider) {
     const [userData, setUserData] = useState<IUserData>(templateUserData)
     const [outBoxColor, setOutBoxColor] = useState("none")
     const [outBoxText, setOutBoxText] = useState("")
+    const [isOutBoxActive, setIsOutBoxActive] = useState<boolean>(false)
 
 
 
@@ -51,12 +51,14 @@ export function ContextProvider({ children }: IContextProvider) {
     }
 
     function controlOutBox(color: string, text: string){
-        setOutBoxColor(color)
+        setIsOutBoxActive(true)
         setOutBoxText(text)
         setTimeout(() => {
-            setOutBoxColor("none")
-            setOutBoxText("")
+            setIsOutBoxActive(false)
         }, 5000);
+    }
+    function closeOutBox(){
+        setIsOutBoxActive(false)
     }
     //START COMPANIES
     async function handleCreateCompany({ name, email, password, cnpj }: ICreateCompanyData): Promise<boolean> {
@@ -183,7 +185,7 @@ async function getUserData(): Promise<void>{
 
     // END USERS
     return (
-        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateUser, handleEditUser, handleDeleteUser,handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder, handleEditExpense, handleDeleteExpense, handleDeleteOrder, getUserData, outBoxText, outBoxColor,  controlOutBox }}>
+        <Context.Provider value={{ checkToken, handleCreateCompany, handleSignInCompany, handleEditCompany, handleDeleteCompany, getSummaryCompany, companySummary, getCompanyData, companyData, getCompanyEmployees, companyEmployees, handleCreateUser, handleEditUser, handleDeleteUser,handleInsertOrder,handleInsertExpense, handleSignUser, getSummaryUser, userSummary, userData, handleChangePassword, handleEditOrder, handleEditExpense, handleDeleteExpense, handleDeleteOrder, getUserData, outBoxText, outBoxColor,  controlOutBox, isOutBoxActive, closeOutBox }}>
             {children}
         </Context.Provider>
     )
