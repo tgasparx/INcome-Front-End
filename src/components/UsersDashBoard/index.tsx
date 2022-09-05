@@ -3,7 +3,8 @@ import { Context } from "../../context";
 import ShowInfoCard from "./components/ShowInfoCard";
 import { Info } from "./components/ShowInfoCard/styles";
 import UserCard from "./components/UserCard";
-import { Container, Content, ContentInfoLeft, ContentInfoRight} from "./styles";
+import UserSummaryDashboard from "./components/UserSummaryDashBoard";
+import { Container,  ContentInfoLeft, ContentInfoRight, FirstContent, SecondContent} from "./styles";
 
 
 
@@ -19,16 +20,20 @@ export default function UsersDashBoard(){
     return (
         <>
       <Container>
-        <Content>
+        <FirstContent>
             <ContentInfoLeft>
           <UserCard userData={userData}/>
-
+        
             </ContentInfoLeft>
-            <ContentInfoRight>
+            <UserSummaryDashboard/>
+
+        </FirstContent>
+        <SecondContent>
+        <ContentInfoRight>
                <ShowInfoCard userData={userData} userSummary={userSummary}/>
  
             </ContentInfoRight>
-        </Content>
+        </SecondContent>
       </Container>
         </>
     )

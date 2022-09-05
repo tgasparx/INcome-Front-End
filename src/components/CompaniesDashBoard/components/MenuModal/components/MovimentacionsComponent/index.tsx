@@ -8,6 +8,8 @@ import EditOrderModal from "./components/OptModal/EditOrderModal";
 import { Container, NavContent, OptContent, OrdersNav, ExpensesNav, ContainerNav } from "./styles";
 import ExpensesTable from "./components/ExpensesTable";
 import CreateExpenseComp from "./components/CreateExpenseComp";
+import EditExpenseModal from "./components/OptModal/EditExpenseModal";
+import DeleteExpenseModal from "./components/OptModal/DeleteExpenseModal";
 // import EditOrderComp from "./components/EditOrderComp";
 
 export default function MovimentationsCOmponent() {
@@ -17,6 +19,8 @@ export default function MovimentationsCOmponent() {
   const [selectedExpenseId, setSelectedExpenseId] = useState("")
   const [isEditOrderModalOpen, setIsEditOrderModalOpen] = useState<boolean>(false)
   const [isDeleteOrderModalOpen, setIsDeleteOrderModalOpen] = useState<boolean>(false)
+  const [isEditExpenseModalOpen, setIsEditExpenseModalOpen] = useState<boolean>(false)
+  const [isDeleteExpenseModalOpen, setIsDeleteExpenseModalOpen] = useState<boolean>(false)
 
   
   function controlSelectedComp() {
@@ -56,6 +60,8 @@ export default function MovimentationsCOmponent() {
     <Container>
       <EditOrderModal isEditOrderModalOpen={isEditOrderModalOpen} setIsEditOrderModalOpen={setIsEditOrderModalOpen} companySummary={companySummary} selectedOrderId={selectedOrderId} companyEmployees={companyEmployees}/>
       <DeleteOrderModal isDeleteOrderModalOpen={isDeleteOrderModalOpen} setIsDeleteOrderModalOpen={setIsDeleteOrderModalOpen} companySummary={companySummary} selectedOrderId={selectedOrderId}/>
+      <EditExpenseModal isEditExpenseModalOpen={isEditExpenseModalOpen} setIsEditExpenseModalOpen={setIsEditExpenseModalOpen} companySummary={companySummary} selectedExpenseId={selectedExpenseId} companyEmployees={companyEmployees}/>
+      <DeleteExpenseModal isDeleteExpenseModalOpen={isDeleteExpenseModalOpen} setIsDeleteExpenseModalOpen={setIsDeleteExpenseModalOpen} selectedExpenseId={selectedExpenseId} companySummary={companySummary}/>
       <ContainerNav>
       <OrdersNav>
       <NavContent>
@@ -86,6 +92,7 @@ export default function MovimentationsCOmponent() {
           onClick={() => {
             if(!selectedOrderId){
               window.alert("Selecione um pedido")
+              setSelectedComp("OrdersTable")
             }else{
               setIsDeleteOrderModalOpen(true)
             }
@@ -112,8 +119,9 @@ export default function MovimentationsCOmponent() {
           onClick={() => {
           if(!selectedExpenseId){
             window.alert("Selecione uma despesa")
+            setSelectedComp("ExpensesTable")
           }else{
-            window.alert("ABERTURA DO MODAL  DE EDIÇÃO DE DESPESA")
+            setIsEditExpenseModalOpen(true)
           }
           }}
           text="Editar despesa"
@@ -122,8 +130,9 @@ export default function MovimentationsCOmponent() {
           onClick={() => {
          if(!selectedExpenseId){
           window.alert("Selecione uma despesa")
+          setSelectedComp("ExpensesTable")
          }else{
-          window.alert("ABERTURA DO MODAL DE EXCLUSÃO DE DESPESA")
+          setIsDeleteExpenseModalOpen(true)
          }
           }}
           text="Excluir despesa"

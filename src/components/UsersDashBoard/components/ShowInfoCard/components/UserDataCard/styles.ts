@@ -9,7 +9,7 @@ flex-direction: column;
 justify-content: space-between;
 align-items: center;
 width: 100%;
-height: 100%;
+height: 95%;
 /* background-color: black; */
 border-radius: 10px;
 
