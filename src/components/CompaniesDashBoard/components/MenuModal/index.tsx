@@ -1,12 +1,15 @@
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import BreadCrumbMenu from './components/BreadCrumbMenu';
 import CompanyComponent from './components/CompanyComponent';
 import EmployeesComponent from './components/EmployeesComponent';
 import MovimentationsCOmponent from './components/MovimentacionsComponent';
-import { Button, Container, Content } from './styles';
+import { OutBox } from './components/OutBox';
+import { Button, Container, ContainerButtons, Content } from './styles';
+import {MdOutlineRefresh} from 'react-icons/md'
+import { Context } from '../../../../context';
 
 interface IMenuModalProps{
     setIsOpen: any
@@ -15,6 +18,7 @@ interface IMenuModalProps{
 }
 export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
     const [selectedPortal, setSelectedPortal] = useState("")
+    const {getSummaryCompany, getCompanyData, getCompanyEmployees} = useContext(Context)
     const customStyles = {
         content: {
             width: "100%",
@@ -42,6 +46,11 @@ export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
       function closeModal() {
         setIsOpen(false);
       }
+      function handleRefreshData(){
+        getSummaryCompany()
+        getCompanyData()
+        getCompanyEmployees()
+      }
     
       function controlSelectedPortal(){
         switch (selectedPortal) {
@@ -67,9 +76,15 @@ export default function MenuModal({setIsOpen, modalIsOpen}:IMenuModalProps){
             <Container>
            
             <BreadCrumbMenu setSelectedPortal={setSelectedPortal}/>
-            <Button onClick={closeModal}>X</Button>
+
+          <ContainerButtons>
+          <Button name="refresh"onClick={handleRefreshData}><MdOutlineRefresh  style={{color:"white"}}/></Button>
+          <Button name="close" onClick={closeModal}>X</Button>
+          
+          </ContainerButtons>
         
             </Container>
+            <OutBox/>
             <Content>
            {controlSelectedPortal()}
                

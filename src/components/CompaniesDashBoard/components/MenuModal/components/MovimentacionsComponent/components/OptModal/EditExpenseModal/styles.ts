@@ -72,12 +72,13 @@ export const Label = styled.label`
 margin-top: 10px;
 `;
 interface IInputProps{
-    type: string
+    inputColor: string
+    value: string
 }
-export const Input = styled.input`
+export const Input = styled.input<IInputProps>`
 border: none;
 border-radius: 5px;
-box-shadow: 2px 0.2px 1px orange;
+box-shadow: 2px 0.2px 1px ${(props) => props.value !== "" ? "green" : props.inputColor};
 height: 30px;
 `;
 export const Button = styled.button`

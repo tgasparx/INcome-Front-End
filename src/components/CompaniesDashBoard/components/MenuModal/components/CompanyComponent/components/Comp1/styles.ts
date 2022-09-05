@@ -11,6 +11,7 @@ grid-template-rows: 50% 50%;
 @media (max-width: 600px) {
     display: flex;
     flex-direction: column;
+
     /* justify-content: space-between; */
 }
 /* background-color: blue; */

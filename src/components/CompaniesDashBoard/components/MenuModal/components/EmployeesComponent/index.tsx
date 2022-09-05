@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../../../../../../context";
+import { OutBox } from "../OutBox";
 import Comp1 from "./components/Comp1";
 import Comp2 from "./components/Comp2";
 import MenuButtons from "./components/MenuButton";
@@ -10,20 +11,20 @@ import { Container, NavContent, OptContent } from "./styles";
 export default function EmployeesComponent() {
   const [selectedComp, setSelectedComp] = useState("");
   const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
-  const { companyEmployees } = useContext(Context);
+  const { companyEmployees, controlOutBox } = useContext(Context);
   const [isOptModalOpen, setIsOptModalOpen] = useState<boolean>(false)
   const [isDeleteEmployeeModalOpen, setIsDeleteEmployeeModalOpen] = useState<boolean>(false)
 
   function handleDeleteEmployee() {
    if(!selectedEmployeeId){
-    window.alert("Selecione um funcionário")
+    controlOutBox("orange", "Selecione um funcionário")
    }else{
     setIsDeleteEmployeeModalOpen(true)
    }
   }
   function handleEditEmployee() {
    if(!selectedEmployeeId){
-    window.alert("Selecione um Funcionário")
+    controlOutBox("orange", "Selecione um funcionário")
    }else{
     setIsOptModalOpen(true)
    }
@@ -82,6 +83,7 @@ export default function EmployeesComponent() {
           text="Remover Funcionário"
         />
       </NavContent>
+    
       <OptContent>{controlSelectedComp()}</OptContent>
     </Container>
   );

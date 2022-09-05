@@ -68,7 +68,17 @@ flex-direction: column;
 export const Label = styled.label`
 margin-top: 10px;
 `;
-export const Input = styled.input``;
+interface IInputProps{
+    inputColor: string
+    value: string
+}
+export const Input = styled.input<IInputProps>`
+height: 35px;
+color: gray;
+width: 100%;
+border: none;
+box-shadow: 3px 0.2px 2px ${(props) => props.value !== "" ? "green" : props.inputColor};
+`;
 export const Button = styled.button`
 width: 200px;
 height: 30px;

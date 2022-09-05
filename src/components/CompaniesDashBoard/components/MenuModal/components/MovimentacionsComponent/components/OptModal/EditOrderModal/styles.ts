@@ -13,7 +13,7 @@ border-radius: 5px;
 display: flex;
 flex-direction: column;
 align-items: center;
-min-height: 660px;
+min-height: 680px;
 
 `;
 export const Header = styled.div`
@@ -67,17 +67,21 @@ width: 60%;
 display: flex;
 flex-direction: column;
 /* padding-bottom: 200px; */
+padding-bottom: 20px;
 `;
 export const Label = styled.label`
 margin-top: 10px;
+
 `;
 interface IInputProps{
-    type: string
+    // type: string
+    inputColor: string
+    value: string
 }
-export const Input = styled.input`
+export const Input = styled.input<IInputProps>`
 border: none;
 border-radius: 5px;
-box-shadow: 2px 0.2px 1px orange;
+box-shadow: 2px 0.2px 1px ${(props) => props.value !== "" ? "green" : props.inputColor};
 height: 30px;
 `;
 export const Button = styled.button`

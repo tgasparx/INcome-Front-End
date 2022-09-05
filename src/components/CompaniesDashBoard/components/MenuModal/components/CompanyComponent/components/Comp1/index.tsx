@@ -14,13 +14,78 @@ export function Comp1({companySummary, companyData}: IComp1Props){
 
 function returnLastIncludedOrder(){
   const all: any[] = companySummary.orders_summary.all_orders
-  const included: any[] = all.filter((e: any) => e.status === "Concluido" || "Pendente")
-  return included[0]
+  const included: any[] = all
+  const final = (all.length - 1)
+  return included[final]
 }
+function returnTextLastIncludedOrder(){
+  if(!returnLastIncludedOrder()){
+    return "Você ainda não adicionou nenhum pedido"
+  }else{
+    return "Último pedido incluído"
+  }
+}
+function returnContentLastIncludedOrder(link: string){
+  switch (link) {
+    case "link1":
+     if(!returnLastIncludedOrder()){
+      return ""
+     }else{
+      return returnLastIncludedOrder().client
+     }
+     
+    case "link2":
+      if(!returnLastIncludedOrder()){
+        return "R$ 0,00"
+      }else{
+        return returnLastIncludedOrder().value
+      }
+
+    default:
+      break;
+  }
+}
+
+
+function returnLastConcluedOrder(){
+  const all: any[] = companySummary.orders_summary.all_orders
+  const included: any[] = all.filter((e: any) => e.status === "Concluido")
+  const final = included.length -1
+  return included[final]
+}
+function returnTextLastConcluedOrder(){
+  if(!returnLastConcluedOrder()){
+    return "Você não possui nenhum pedido concluído"
+  }else{
+    return "Último pedido concluído"
+  }
+}
+function returnContentLastConcluedOrder(link: string){
+  switch (link) {
+    case "link1":
+      if(!returnLastConcluedOrder()){
+        return ""
+      }else{
+        return returnLastConcluedOrder().client
+      }
+    case "link2":
+
+      if(!returnLastConcluedOrder()){
+        return "R$ 0,00"
+      }else{
+        return returnLastConcluedOrder().value
+      }
+    default:
+      break;
+  }
+}
+
+
+
 function returnLastIncludedExpense(){
   const all: any[] = companySummary.expenses_summary.all_expenses
-  const included: any[] = all.filter((e: any) => e.status === "Concluido" || "Pendente")
-  return included[0]
+  const final = all.length - 1
+  return all[final]
 }
 function returnTextExpense(){
   if(returnLastIncludedExpense()){
@@ -48,17 +113,13 @@ function returnExpenseContents(link: string){
       return null
   }
 }
-function returnLastConcluedOrder(){
-  const all: any[] = companySummary.orders_summary.all_orders
-  const included: any[] = all.filter((e: any) => e.status === "Concluido" || "Pendente")
-  return included[0]
-}
+
 const cardContent = [
   {
     title: "Último pedido",
-    description: "Último pedido incluído",
-    link1: `${returnLastIncludedOrder().client}`,
-    link2: `R$ ${returnLastIncludedOrder().value}`
+    description: returnTextLastIncludedOrder(),
+    link1: returnContentLastIncludedOrder("link1"),
+    link2: returnContentLastIncludedOrder("link2"),
 
   },
   {
@@ -70,9 +131,9 @@ const cardContent = [
   },
   {
     title: "Último pedido Concluído",
-    description: "Último pedido concluído",
-    link1: `${returnLastConcluedOrder().client}`,
-    link2: `R$ ${returnLastConcluedOrder().value}`,
+    description: returnTextLastConcluedOrder(),
+    link1: returnContentLastConcluedOrder("link1"),
+    link2: returnContentLastConcluedOrder("link2")
 
   }
 

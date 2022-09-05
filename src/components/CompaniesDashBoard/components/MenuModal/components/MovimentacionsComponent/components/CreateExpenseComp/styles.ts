@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-interface IInputProps{
-    value: string
-}
+
 export const Container = styled.div`
 width: 100%;
 display: flex;
@@ -25,11 +23,14 @@ flex-direction: column;
 margin-bottom: 20px;
 `;
 
-
+interface IInputProps{
+    inputColor: string
+    value: string
+}
 export const Input = styled.input<IInputProps>`
 border: none;
 border-radius: 5px;
-box-shadow: 2px 0.2px 1px orange;
+box-shadow: 2px 0.2px 1px ${(props) => props.value !== "" ? "green" : props.inputColor};
 height: 30px;
 
 `;

@@ -17,9 +17,14 @@ async companyAuth({email, password}: any){
     }
 
 }
-async companyEdit({name, email, cnpj}: any, companyToken: string){
-    const edited = await api.patch(`/companies/edit/${companyToken}`, {name, email, cnpj}).then(response => response.data)
-    return edited
+async companyEdit({name, email, cnpj}: any, companyToken: string): Promise<boolean>{
+    const edited = await api.patch(`/companies/edit/${companyToken}`, {name, email, cnpj}).then(response => response)
+    if(edited.status === 202){
+        return true
+    }else{
+        return false
+    }
+    
 }
 async companyDelete(token: string){}
 async companySummary(companyToken: string){

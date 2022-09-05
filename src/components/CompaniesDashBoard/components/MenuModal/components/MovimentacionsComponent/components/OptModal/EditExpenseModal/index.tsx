@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../../../../../../../../../context";
-import SelectDriver from "./components/SelectDriver";
+import { OutBox } from "../../../../OutBox";
 import SelectStatus from "./components/SelectStatus";
 import { Container, Label, Input, Button, Header, CloseButton, Form, ShowInfo, Left, Right } from "./styles";
 
@@ -14,19 +14,23 @@ interface OptModalProps{
 }
 export default function EditExpenseModal({isEditExpenseModalOpen, setIsEditExpenseModalOpen, companySummary, selectedExpenseId, companyEmployees}: OptModalProps){
     const selectedOrderData = companySummary.expenses_summary.all_expenses.filter((e: any) => e.expense_id === selectedExpenseId)
-    const {handleEditExpense} = useContext(Context)
+    const {handleEditExpense, controlOutBox} = useContext(Context)
     const [status, setStatus] = useState("")
-    const [driver, setDriver] = useState("")
-    const [client, setClient] = useState("")
     const [description, setDescription] = useState("")
     const [value, setValue] = useState("")
-    const [km, setKm] = useState("")
+    const [inputColor, setInputColor] = useState("gray")
 
 
     async function handleSubmit(){
-        const edited = await handleEditExpense({description, value, status}, selectedExpenseId)
-        // console.log(selectedEmployeeId)
-        window.location.href = "/homeCompanies"
+        if(status && description && status){
+            const edited = await handleEditExpense({description, value, status}, selectedExpenseId)
+            controlOutBox("green", "Despesa editada com sucesso")
+        }else{
+            controlOutBox("orange", "Preencha as informações")
+            setInputColor("orange")
+        }
+ 
+    
     }
 
 
@@ -48,12 +52,13 @@ export default function EditExpenseModal({isEditExpenseModalOpen, setIsEditExpen
         </ShowInfo>
         <Form>
         <Label>Descrição</Label>
-         <Input value={description} onChange={(e: any) => setDescription(e.target.value)} required={true}/>
+         <Input value={description} onChange={(e: any) => setDescription(e.target.value)} required={true} inputColor={inputColor}/>
          <Label>Valor</Label>
-         <Input value={value} onChange={(e:any) => setValue(e.target.value)} required={true} type="number" style={{width: "200px"}}/>
+         <Input value={value} onChange={(e:any) => setValue(e.target.value)} required={true} type="number" style={{width: "200px"}} inputColor={inputColor}/>
          <Label>Status</Label>
-        <SelectStatus status={status} setStatus={setStatus}/>
+        <SelectStatus status={status} setStatus={setStatus} inputColor={inputColor}/>
          <Button onClick={handleSubmit}>Confirmar</Button>
+         <OutBox/>
         </Form>
         </Container>
      )

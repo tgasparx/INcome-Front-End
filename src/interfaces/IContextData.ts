@@ -27,4 +27,7 @@ export default interface IContextData{
     handleDeleteOrder: (orderId: string) => Promise<any>
     handleDeleteExpense: (expenseId: string) => Promise<any>
     getUserData: () => Promise<any>
+    outBoxText: any
+    outBoxColor: any
+    controlOutBox: any
 }

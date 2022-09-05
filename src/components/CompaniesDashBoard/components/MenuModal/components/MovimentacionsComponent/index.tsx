@@ -15,7 +15,7 @@ import DeleteExpenseModal from "./components/OptModal/DeleteExpenseModal";
 export default function MovimentationsCOmponent() {
   const [selectedComp, setSelectedComp] = useState("");
   const [selectedOrderId, setSelectedOrderId] = useState("");
-  const { companySummary, companyEmployees } = useContext(Context);
+  const { companySummary, companyEmployees, controlOutBox } = useContext(Context);
   const [selectedExpenseId, setSelectedExpenseId] = useState("")
   const [isEditOrderModalOpen, setIsEditOrderModalOpen] = useState<boolean>(false)
   const [isDeleteOrderModalOpen, setIsDeleteOrderModalOpen] = useState<boolean>(false)
@@ -80,7 +80,7 @@ export default function MovimentationsCOmponent() {
         <MenuButtons
           onClick={() => {
             if(!selectedOrderId){
-              window.alert("Selecione um pedido")
+              controlOutBox("orange", "Selecione um pedido")
               setSelectedComp("OrdersTable")
             }else{
               setIsEditOrderModalOpen(true)
@@ -91,7 +91,7 @@ export default function MovimentationsCOmponent() {
         <MenuButtons
           onClick={() => {
             if(!selectedOrderId){
-              window.alert("Selecione um pedido")
+              controlOutBox("orange", "Selecione um pedido")
               setSelectedComp("OrdersTable")
             }else{
               setIsDeleteOrderModalOpen(true)
@@ -118,7 +118,7 @@ export default function MovimentationsCOmponent() {
         <MenuButtons
           onClick={() => {
           if(!selectedExpenseId){
-            window.alert("Selecione uma despesa")
+            controlOutBox("orange", "Selecione uma despesa")
             setSelectedComp("ExpensesTable")
           }else{
             setIsEditExpenseModalOpen(true)
@@ -129,7 +129,7 @@ export default function MovimentationsCOmponent() {
         <MenuButtons
           onClick={() => {
          if(!selectedExpenseId){
-          window.alert("Selecione uma despesa")
+          controlOutBox("orange", "Selecione uma despesa")
           setSelectedComp("ExpensesTable")
          }else{
           setIsDeleteExpenseModalOpen(true)
