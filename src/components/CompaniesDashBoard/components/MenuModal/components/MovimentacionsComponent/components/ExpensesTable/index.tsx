@@ -1,5 +1,5 @@
+import ListExpensesTable from "./components/ListExpensesTable";
 import { Container } from "./styles";
-import DataShowTable from "./Table";
 
 interface IComp1Props {
   setSelectedExpenseId: any;
@@ -13,7 +13,7 @@ export default function ExpensesTable({
 }: IComp1Props) {
   return (
     <Container>
-      <DataShowTable
+      <ListExpensesTable
         companySummary={companySummary}
         selectedExpenseId={selectedExpenseId}
         setSelectedExpenseId={setSelectedExpenseId}

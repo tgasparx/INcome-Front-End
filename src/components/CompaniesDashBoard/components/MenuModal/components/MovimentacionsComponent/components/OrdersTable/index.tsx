@@ -1,5 +1,5 @@
+import ListOrdersTable from "./components/ListOrdersTable";
 import { Container } from "./styles";
-import DataShowTable from "./Table";
 
 interface IComp1Props {
   setSelectedOrderId: any;
@@ -13,7 +13,7 @@ export default function OrdersTable({
 }: IComp1Props) {
   return (
     <Container>
-      <DataShowTable
+      <ListOrdersTable
         companySummary={companySummary}
         selectedOrderId={selectedOrderId}
         setSelectedOrderId={setSelectedOrderId}
