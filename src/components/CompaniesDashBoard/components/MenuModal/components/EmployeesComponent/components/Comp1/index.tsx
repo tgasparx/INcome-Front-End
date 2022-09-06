@@ -1,5 +1,5 @@
-import { Container } from "./styles";
-import DataShowTable from "./Table";
+import EmployeesTable from "./components/EmployeesTable";
+import { Container, Content } from "./styles";
 
 interface IComp1Props {
   setSelectedEmployeeId: any;
@@ -13,11 +13,16 @@ export default function Comp1({
 }: IComp1Props) {
   return (
     <Container>
-      <DataShowTable
+      {/* <DataShowTable
         companyEmployees={companyEmployees}
         selectedEmployeeId={selectedEmployeeId}
         setSelectedEmployeeId={setSelectedEmployeeId}
-      />
+      /> */}
+      <Content>
+      <EmployeesTable companyEmployees={companyEmployees} setSelectedEmployeeId={setSelectedEmployeeId} selectedEmployeeId={selectedEmployeeId}/>
+      </Content>
+
+  
     </Container>
   );
 }

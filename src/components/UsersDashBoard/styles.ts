@@ -8,8 +8,9 @@ align-items: center;
 justify-content: center;
 width: 100%;
 height: 800px;
+
 /* background-color: yellow; */
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     flex-direction: column;
     min-height: 600px;
     height: 100%;
@@ -20,12 +21,14 @@ height: 800px;
 export const FirstContent = styled.div`
 display: flex;
 flex-direction: column;
-width: 48%;
+width: 28%;
+min-width: 330px;
+
 /* align-items: center;
 justify-content: center; */
 height: 90%;
 /* background-color: blue; */
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     width: 95%;
     min-height: 400px;
 
@@ -34,9 +37,9 @@ height: 90%;
 export const SecondContent = styled.div`
 display: flex;
 flex-direction: row;
-width: 48%;
+width: 68%;
 height: 90%;
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     width: 100%;
 
 }
@@ -50,7 +53,7 @@ height: 30%;
 background-color: lightgray;
 border-radius: 10px;
 box-shadow: 1px 0.4px 4px;
-@media (max-width: 700px) {
+@media (max-width: 900px) {
    width: 100%;
    min-height: 120px;
   
@@ -58,7 +61,7 @@ box-shadow: 1px 0.4px 4px;
 `;
 export const ContentInfoRight = styled.div`
 
-box-shadow: 1px 0.4px 4px;
+/* box-shadow: 1px 0.4px 4px; */
 margin: 0px 10px;
 width: 100%;
 height: 100%;
@@ -69,9 +72,9 @@ grid-template-rows: 50% 50%;
 align-items: center;
 justify-items: center;
 
-background-color: lightgray;
+/* background-color: lightskyblue; */
 border-radius: 10px;
-@media (max-width: 700px) {
+@media (max-width: 900px) {
    width: 100%;
    margin: 10px 0;
    min-height: 500px;

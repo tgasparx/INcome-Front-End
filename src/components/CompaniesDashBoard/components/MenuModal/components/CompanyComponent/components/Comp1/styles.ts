@@ -20,7 +20,7 @@ margin-top: 10px;
 export const RightContent = styled.div`
 border-radius: 0 5px 5px 0;
 /* padding-left: 10%; */
-    width: 50%;
+    width: 70%;
     height: 100%;
 /* margin-right: 10px; */
 display: flex;
@@ -35,11 +35,13 @@ justify-content: center;
 export const LeftContent = styled.div`
 border-radius: 5px 0 0 5px;
 padding-left: 10%;
-   width: 50%;
+   width: 30%;
     height: 100%;
 display: flex;
 flex-direction: column;
 justify-content: center;
+align-items: center;
+/* background-color: blue; */
 /* height: 60%; */
 
 `;

@@ -3,10 +3,14 @@ import styled from 'styled-components'
 export const Info = styled.div`
 width: 90%;
 height: 90%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
 
-background-color: white;
-border-radius: 10px;
-box-shadow: 1px 0.2px 1px;
+/* background-color: white; */
+/* border-radius: 10px; */
+/* box-shadow: 1px 0.2px 1px; */
 
 `;
 

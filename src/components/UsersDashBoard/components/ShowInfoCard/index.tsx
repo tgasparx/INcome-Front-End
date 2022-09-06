@@ -1,4 +1,4 @@
-import Card from "./components/SummaryDataCard";
+import SummaryDataCard from "./components/SummaryDataCard";
 import UserDataCard from "./components/UserDataCard";
 import { Down, ContainerFlag, Info, Up, ContentFlag } from "./styles";
 
@@ -13,17 +13,20 @@ const data = [
     {
         value: `${userSummary.total_km || 0}`,
         tag: "Qulômetros",
-        description: "Total de quilõmetros percorridos"    
+        description: "Total de quilõmetros percorridos"  ,
+        
     },
     {
         value: `${userSummary.total_pedidos || 0}`,
         tag: "Pedidos",
-        description: "Total de pedidos"    
+        description: "Total de pedidos"
+        
     },
     {
         value: `${userSummary.total_pedidos_finalizados || 0}`,
-        tag: "Pedidos",
-        description: "Total de pedidos concluídos"    
+        tag: "Pedidos concluídos",
+        description: "Total de pedidos concluídos"
+            
     }
 ]
 
@@ -32,16 +35,16 @@ const data = [
         <>
         {/* Info - Total de quilômetros */}
         <Info> 
-     <Card data={data[0]}/>
+     <SummaryDataCard bkColor="purple" data={data[0]}/>
 
         </Info>
                 {/* Info -=- total de pedidos */}
         <Info>
-        <Card data={data[1]}/>
+        <SummaryDataCard bkColor="darkgreen" data={data[1]}/>
         </Info>
                 {/* Info -=- total de pedidos concluídos */}
         <Info>
-        <Card data ={data[2]}/>
+        <SummaryDataCard bkColor="green" data ={data[2]}/>
         </Info>
                 {/* Info -=- Dados do usuario*/}
         <Info>

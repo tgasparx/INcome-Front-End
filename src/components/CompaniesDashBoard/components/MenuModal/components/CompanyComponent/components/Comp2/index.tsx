@@ -28,8 +28,11 @@ async function handleSubmit(){
 }
     return (
         <>
+           <OutBox/>
         <Container>
+     
       <Content>
+        
       <Label>Nome</Label><br></br>
          <Input onChange={(e: any) => setName(e.target.value)} value={name} inputColor={inputColor}></Input> <br></br>
          <Label>Email</Label><br></br>
@@ -37,7 +40,7 @@ async function handleSubmit(){
          <Label>Cnpj</Label><br></br>
          <Input onChange={(e: any) => setCnpj(e.target.value)} value={cnpj} inputColor={inputColor}></Input> <br></br>
          <Button onClick={handleSubmit}>Confirmar alterações</Button>
-        <OutBox/>
+      
       </Content>
         </Container>
         </>

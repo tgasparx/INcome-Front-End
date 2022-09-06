@@ -37,7 +37,8 @@ export const Down = styled.div`
 padding-right: 20px;
 display: flex;
 flex-direction: row;
-justify-content: flex-end;
+justify-content: right;
+align-items: center;
 /* justify-content: right; */
 width: 100%;
 height: 35%;

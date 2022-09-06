@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../../../../../../../../context";
+import CompanyAvatar from "./components/Avatar";
 import MediaCard from "./components/Card";
 import { Container, LeftContent, RightContent, First, Second, Thirty, Fourthy } from "./styles";
 
@@ -143,19 +144,13 @@ const cardContent = [
       <Container>
         <First>
         <LeftContent>
-        <span>Nome:</span>
-       <span>Email:</span>
-        <span>Cnpj:</span>
-        <span>Data de criação:</span>
-        <span>Data de atualização:</span>
-        <span>Área de atuação:</span>
+          <CompanyAvatar/>
+   
+  
         </LeftContent>
         <RightContent>
-        {companyData.name}
-       <span>{companyData.email}</span>
+        <span>{companyData.name}</span>
         <span>{companyData.cnpj}</span>
-        <span>{companyData.created_at}</span>
-        <span>{companyData.updated_at}</span>
         <span>Logística</span>
         </RightContent>
         </First>

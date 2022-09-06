@@ -28,6 +28,7 @@ export function Comp3() {
     }
     return (
         <>
+          <OutBox/>
             <Container>
                 <Content>
                     <Label>Senha antiga</Label>
@@ -38,7 +39,7 @@ export function Comp3() {
                     <Input value={confirmNewPassword} onChange={(e: any) => setConfirmNewPassword(e.target.value)} inputColor={inputColor}/>
                     
                     <Button onClick={handleSubmit}>Confirmar</Button>
-                    <OutBox/>
+                  
                 </Content>
             </Container>
         </>
